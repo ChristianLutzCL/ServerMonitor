@@ -1,0 +1,7 @@
+# Folder
+__pycache__
+.vscode
+
+#Files
+*.pyc
+*.pyo
