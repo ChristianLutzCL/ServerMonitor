@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block text %}{{ a }}{% endblock %}
+
+{% block content %}
+<form method="POST">
+  <label for="url">URL</label>
+  <input type="text" name="url" class="form-control" id="url" placeholder="Enter URL">
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}
