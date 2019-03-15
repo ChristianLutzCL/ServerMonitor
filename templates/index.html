@@ -1,10 +1,22 @@
 {% extends 'base.html' %}
-{% block text %}{{ a }}{% endblock %}
+
+{% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-<form method="POST">
-  <label for="url">URL</label>
-  <input type="text" name="url" class="form-control" id="url" placeholder="Enter URL">
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<div class="container shadow p-3 mb-5 bg-white rounded">
+  <div class="card-body">
+    <form method="POST">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon3">https://www.</span>
+            </div>
+            <input type="text" class="form-control" id="url" name="url" aria-describedby="basic-addon3">
+        </div>
+      <button type="submit" class="btn btn-primary btn-block">Submit</button>
+    </form>
+  </div>
+  <div class="alert alert-primary text-center" role="alert">
+    {% block text %}{{ a }}{% endblock %}
+  </div>
+</div>
 {% endblock %}
