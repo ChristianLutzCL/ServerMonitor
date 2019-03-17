@@ -3,30 +3,32 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-<div class="container shadow p-3 mb-5 bg-white rounded">
+<div class="container shadow p-2 mb-5 bg-white rounded">
   <h5 class="card-header">Check Server Status</h5>
   <div class="card-body">
     <form method="POST">
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon3">https://www.</span>
-            </div>
-            <input type="text" class="form-control" id="url" name="url" aria-describedby="basic-addon3">
-        </div>
-      <button type="submit" class="btn btn-primary btn-block">Submit</button>
+      <div class="input-group mb-3">
+        <input type="text" id="url" name="url" class="form-control" placeholder="google.com" aria-label="google.com" aria-describedby="button-addon2">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Check</button>
+          </div>
+      </div>
     </form>
-  </div>
-  <div class="alert alert-primary text-center" role="alert">
-  {% block text %}{{ a }}{% endblock %}
+    <div class="alert alert-primary text-center" role="alert">
+      {% block text %}{{ response }}{% endblock %}
+    </div>
   </div>
 </div>
 {% endblock %}
 
-
 {% block leftcol %}
-<div class="container shadow p-3 mb-5 bg-white rounded"></div>
+<div class="container shadow p-2 mb-5 bg-white rounded">
+    <h5 class="card-header">Recent checked Websites</h5>
+    <div class="card-body">
+    </div>
+</div>
 {% endblock %}
 
 {% block rightcol %}
-<div class="container shadow p-3 mb-5 bg-white rounded"></div>
+<div class="container shadow p-2 mb-5 bg-white rounded"></div>
 {% endblock %}
