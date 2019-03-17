@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 
-from monitor import *
+from monitor import monitor_website
 
 app = Flask(__name__)
 
@@ -9,10 +9,9 @@ def index():
     if request.method == 'POST':
         if request.form['url'] != '':
             url = request.form['url']
-            return render_template('index.html', title="Home", a=monitor_website('https://' + url))
-            #return monitor_website("http://www.inspiredprogrammer.com/")
+            response = monitor_website('https://' + url)
+            return render_template('index.html', title="Home", response=response)
         else:
-            return render_template('index.html', title="Home", a=monitor_website('https://www.google.de'))
+            return render_template('index.html', title="Home", response='ERROR')
     else:
-        url = 'google.de'
-        return render_template('index.html', title="Home", a=monitor_website('https://' + url))
+        return render_template('index.html', title="Home", response=response)
