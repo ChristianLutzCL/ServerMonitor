@@ -16,4 +16,3 @@ def index():
     else:
         url = 'google.de'
         return render_template('index.html', title="Home", a=monitor_website('https://' + url))
-

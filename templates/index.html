@@ -4,6 +4,7 @@
 
 {% block content %}
 <div class="container shadow p-3 mb-5 bg-white rounded">
+  <h5 class="card-header">Check Server Status</h5>
   <div class="card-body">
     <form method="POST">
         <div class="input-group mb-3">
@@ -16,7 +17,16 @@
     </form>
   </div>
   <div class="alert alert-primary text-center" role="alert">
-    {% block text %}{{ a }}{% endblock %}
+  {% block text %}{{ a }}{% endblock %}
   </div>
 </div>
+{% endblock %}
+
+
+{% block leftcol %}
+<div class="container shadow p-3 mb-5 bg-white rounded"></div>
+{% endblock %}
+
+{% block rightcol %}
+<div class="container shadow p-3 mb-5 bg-white rounded"></div>
 {% endblock %}
