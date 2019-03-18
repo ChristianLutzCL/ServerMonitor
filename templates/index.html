@@ -6,17 +6,24 @@
 <div class="container shadow p-2 mb-5 bg-white rounded">
   <h5 class="card-header">Check Server Status</h5>
   <div class="card-body">
-    <form method="POST">
-      <div class="input-group mb-3">
-        <input type="text" id="url" name="url" class="form-control" placeholder="google.com" aria-label="google.com" aria-describedby="button-addon2">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Check</button>
-          </div>
-      </div>
-    </form>
-    <div class="alert alert-primary text-center" role="alert">
-      {% block text %}{{ response }}{% endblock %}
+  <form method="POST">
+    <div class="input-group mb-3">
+      <input type="url" id="url" name="url" class="form-control" placeholder="https://www.google.com" aria-describedby="button-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Check</button>
+        </div>
     </div>
+  </form>
+    <ul class="list-group" style="width:auto">
+      <a class="list-group-item list-group-item-action active">
+        <div class="d-flex w-100 justify-content-between">
+          <h6 class="mb-1">Website Response</h6>
+        </div>
+      </a>  
+      <li class="list-group-item"><a class="font-weight-bold">URL checked:</a> {{ response[0] }}</li>
+      <li class="list-group-item"><a class="font-weight-bold">Response:</a> {{ response[2] }}</li>
+      <li class="list-group-item"><a class="font-weight-bold">Response code:</a> {{ response[1] }}</li>
+    </ul>
   </div>
 </div>
 {% endblock %}
@@ -29,6 +36,3 @@
 </div>
 {% endblock %}
 
-{% block rightcol %}
-<div class="container shadow p-2 mb-5 bg-white rounded"></div>
-{% endblock %}
