@@ -61,6 +61,32 @@
             "jinja": true
         },
         {
+            "name": "Flask",
+            "type": "python",
+            "request": "launch",
+            //"stopOnEntry": false,
+            //"pythonPath": "${config:python.pythonPath}",
+            "module": "flask",
+            "cwd": "${workspaceRoot}\\monitor",
+            "env": {
+                "FLASK_APP": "monitor_app.py",
+                "FLASK_ENV": "development"
+            },
+            "args": [
+                "run",
+                "--debugger",
+                "--reload",
+                "--port",
+                "8080"
+            ],
+            "envFile": "${workspaceRoot}/venv",
+            "debugOptions": [
+                "WaitOnAbnormalExit",
+                "WaitOnNormalExit",
+                "RedirectOutput"
+            ]
+        },
+        {
             "name": "Python: Current File (External Terminal)",
             "type": "python",
             "request": "launch",
