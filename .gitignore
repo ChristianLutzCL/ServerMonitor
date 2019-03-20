@@ -1,6 +1,8 @@
 # Folder
 __pycache__
-.vscode
+vscode
+venv
+.env
 
 #Files
 *.pyc
