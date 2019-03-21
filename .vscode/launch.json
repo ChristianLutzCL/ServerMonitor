@@ -67,9 +67,9 @@
             //"stopOnEntry": false,
             //"pythonPath": "${config:python.pythonPath}",
             "module": "flask",
-            "cwd": "${workspaceRoot}\\monitor",
+            "cwd": "${workspaceRoot}",
             "env": {
-                "FLASK_APP": "monitor_app.py",
+                "FLASK_APP": "monitor",
                 "FLASK_ENV": "development"
             },
             "args": [
