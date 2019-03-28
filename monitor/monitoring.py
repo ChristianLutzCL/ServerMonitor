@@ -6,11 +6,15 @@ def monitor_website(url):
     
     if r.status_code == 200:
         print(r.status_code)
-        return r.url, r.status_code, r.reason
+        return r.url, r.status_code, r.reason, "Website is Online!"
     elif r.status_code != 200:
         print("RESPONSE FAILED")
-        return r.url, r.status_code, r.reason
+        return r.url, r.status_code, r.reason, "Website is Offline!"
 
+
+def clear_url():
+    pass
+    
 
 def tracert(): #TODO
     pass
