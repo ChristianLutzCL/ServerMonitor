@@ -1,11 +1,12 @@
+from flask import render_template, request
 from monitor import app
 from monitor.monitoring import monitor_website
-from flask import render_template, request
+
 
 
 @app.route("/", methods=('GET', 'POST'))
 def index():
-    if request.method == 'POST':
+    if request.method == 'POST': #TODO: Rework whole response function
         if request.form['url'] != '':
             url = request.form['url']
             response = monitor_website(url)
