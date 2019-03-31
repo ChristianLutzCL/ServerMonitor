@@ -1,11 +1,14 @@
 from monitor import db
 
-#TODO: Create Models for recent checked websites view
 
-class User(db.Model):
+class CheckedWebsite(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True, nullable=False)
-    email = db.Column(db.String(120), unique=True, nullable=False)
+    #check_date = db.Column(db.DateTime)
+    website_url = db.Column(db.String(80), unique=False, nullable=True)
+    response_code = db.Column(db.String(10), unique=False, nullable=True)
+    response_message = db.Column(db.String(10), unique=False, nullable=True)
+    #isOnline = db.Column(db.Boolean)
 
     def __repr__(self):
-        return '<User %r>' % self.username
+        return self.website_url
+
