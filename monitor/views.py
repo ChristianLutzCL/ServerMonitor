@@ -1,7 +1,7 @@
 from flask import render_template, request
 from monitor import app
 from monitor.monitoring import monitor_website
-from monitor.models import CheckedWebsite
+from monitor.models import CheckedWebsite, updateDatabase
 
 
 
@@ -11,8 +11,10 @@ def index():
         if request.form['url'] != '':
             url = request.form['url']
             response = monitor_website(url)
-            test = CheckedWebsite.query.first()
-            return render_template('index.html', title="Home", response=response, test=test)
+            t = CheckedWebsite(website_url=str(response[0]), response_code=str(response[1]), response_message=str(response[2]))
+            updateDatabase(t)
+            o = CheckedWebsite.query.all()
+            return render_template('index.html', title="Home", response=response, test=o)
         else:
             return render_template('index.html', title="Home", response=["ERROR", "ERROR", "ERROR"])
     else:
