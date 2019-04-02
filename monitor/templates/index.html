@@ -36,150 +36,24 @@
 {% block leftcol %}
 <div class="container shadow p-2 mb-5 bg-white rounded">
     <h5 class="card-header">Recent checked Websites</h5>
+    {% for t in test %}
     <div class="card-body">
         <div class="card" style="width: auto;">
+            {% if t.response_code == '200' %}
             <div class="card-header bg-success text-center">
-              {{ test }} is Online!
+            {% else %}
+            <div class="card-header bg-danger text-center">
+            {% endif %}
+              {{ t.website_url }} {% if t.response_code == '200'%} is Online! {% else %} is Offline! {% endif %}
             </div>
             <ul class="list-group list-group-horizontal-xl flex-fill mx-auto border-0">
-                <li class="list-group-item border-0">Date: 03/30/2019 | 14:50 UTC</li>
-                <li class="list-group-item border-0">Code: 400</li>
-                <li class="list-group-item border-0"></li>
+                <li class="list-group-item border-0">Date: {{ t.check_date }}</li>
+                <li class="list-group-item border-0">Code: {{ t.response_code }}</li>
+                <li class="list-group-item border-0">Response: {{ t.response_message }}</li>
             </ul>
         </div>
     </div>
-    <div class="card-body">
-        <div class="card" style="width: auto;">
-            <div class="card-header bg-danger text-center">
-              www.websiteoffline.com is Offline!
-            </div>
-            <ul class="list-group list-group-horizontal-xl flex-fill mx-auto">
-                <li class="list-group-item border-0">Date: 03/30/2019 - 13:22 UTC</li>
-                <li class="list-group-item border-0">Code: 404</li>
-                <li class="list-group-item border-0">Response: Failed</li>
-            </ul>
-        </div>
-    </div>
-    <div class="card-body">
-        <div class="card" style="width: auto;">
-            <div class="card-header bg-success text-center">
-              www.inspiredprogrammer.com is Online!
-            </div>
-            <ul class="list-group list-group-horizontal-xl flex-fill mx-auto border-0">
-                <li class="list-group-item border-0">Date: 03/30/2019 | 14:50 UTC</li>
-                <li class="list-group-item border-0">Code: 400</li>
-                <li class="list-group-item border-0">Response: OK</li>
-            </ul>
-        </div>
-    </div>
-    <div class="card-body">
-        <div class="card" style="width: auto;">
-            <div class="card-header bg-danger text-center">
-              www.websiteoffline.com is Offline!
-            </div>
-            <ul class="list-group list-group-horizontal-xl flex-fill mx-auto">
-                <li class="list-group-item border-0">Date: 03/30/2019 - 13:22 UTC</li>
-                <li class="list-group-item border-0">Code: 404</li>
-                <li class="list-group-item border-0">Response: Failed</li>
-            </ul>
-        </div>
-    </div>
-    <div class="card-body">
-        <div class="card" style="width: auto;">
-            <div class="card-header bg-success text-center">
-              www.inspiredprogrammer.com is Online!
-            </div>
-            <ul class="list-group list-group-horizontal-xl flex-fill mx-auto border-0">
-                <li class="list-group-item border-0">Date: 03/30/2019 | 14:50 UTC</li>
-                <li class="list-group-item border-0">Code: 400</li>
-                <li class="list-group-item border-0">Response: OK</li>
-            </ul>
-        </div>
-    </div>
-    <div class="card-body">
-        <div class="card" style="width: auto;">
-            <div class="card-header bg-danger text-center">
-              www.websiteoffline.com is Offline!
-            </div>
-            <ul class="list-group list-group-horizontal-xl flex-fill mx-auto">
-                <li class="list-group-item border-0">Date: 03/30/2019 - 13:22 UTC</li>
-                <li class="list-group-item border-0">Code: 404</li>
-                <li class="list-group-item border-0">Response: Failed</li>
-            </ul>
-        </div>
-    </div>
-    <div class="card-body">
-        <div class="card" style="width: auto;">
-            <div class="card-header bg-success text-center">
-              www.inspiredprogrammer.com is Online!
-            </div>
-            <ul class="list-group list-group-horizontal-xl flex-fill mx-auto border-0">
-                <li class="list-group-item border-0">Date: 03/30/2019 | 14:50 UTC</li>
-                <li class="list-group-item border-0">Code: 400</li>
-                <li class="list-group-item border-0">Response: OK</li>
-            </ul>
-        </div>
-    </div>
-    <div class="card-body">
-        <div class="card" style="width: auto;">
-            <div class="card-header bg-danger text-center">
-              www.websiteoffline.com is Offline!
-            </div>
-            <ul class="list-group list-group-horizontal-xl flex-fill mx-auto">
-                <li class="list-group-item border-0">Date: 03/30/2019 - 13:22 UTC</li>
-                <li class="list-group-item border-0">Code: 404</li>
-                <li class="list-group-item border-0">Response: Failed</li>
-            </ul>
-        </div>
-    </div>
-    <div class="card-body">
-        <div class="card" style="width: auto;">
-            <div class="card-header bg-success text-center">
-              www.inspiredprogrammer.com is Online!
-            </div>
-            <ul class="list-group list-group-horizontal-xl flex-fill mx-auto border-0">
-                <li class="list-group-item border-0">Date: 03/30/2019 | 14:50 UTC</li>
-                <li class="list-group-item border-0">Code: 400</li>
-                <li class="list-group-item border-0">Response: OK</li>
-            </ul>
-        </div>
-    </div>
-    <div class="card-body">
-        <div class="card" style="width: auto;">
-            <div class="card-header bg-danger text-center">
-              www.websiteoffline.com is Offline!
-            </div>
-            <ul class="list-group list-group-horizontal-xl flex-fill mx-auto">
-                <li class="list-group-item border-0">Date: 03/30/2019 - 13:22 UTC</li>
-                <li class="list-group-item border-0">Code: 404</li>
-                <li class="list-group-item border-0">Response: Failed</li>
-            </ul>
-        </div>
-    </div>
-    <div class="card-body">
-        <div class="card" style="width: auto;">
-            <div class="card-header bg-success text-center">
-              www.inspiredprogrammer.com is Online!
-            </div>
-            <ul class="list-group list-group-horizontal-xl flex-fill mx-auto border-0">
-                <li class="list-group-item border-0">Date: 03/30/2019 | 14:50 UTC</li>
-                <li class="list-group-item border-0">Code: 400</li>
-                <li class="list-group-item border-0">Response: OK</li>
-            </ul>
-        </div>
-    </div>
-    <div class="card-body">
-        <div class="card" style="width: auto;">
-            <div class="card-header bg-danger text-center">
-              www.websiteoffline.com is Offline!
-            </div>
-            <ul class="list-group list-group-horizontal-xl flex-fill mx-auto">
-                <li class="list-group-item border-0">Date: 03/30/2019 - 13:22 UTC</li>
-                <li class="list-group-item border-0">Code: 404</li>
-                <li class="list-group-item border-0">Response: Failed</li>
-            </ul>
-        </div>
-    </div>
+   {% endfor %}
 </div>
 {% endblock %}
 
