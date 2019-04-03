@@ -17,7 +17,7 @@
     <ul class="list-group" style="width:auto">
       <a class="list-group-item list-group-item-action active">
         <div class="d-flex w-100 justify-content-between">
-          <h6 class="mb-1">Website Response | {{ response[3] }}</h6>
+          <h6 class="mb-1">Website Response for {{ response[0] }}</h6>
         </div>
       </a>  
       <li class="list-group-item"><a class="font-weight-bold">Checked URL:</a> {{ response[0] }}</li>
@@ -29,6 +29,14 @@
 <div class="container shadow p-2 mb-5 bg-white rounded">
     <h5 class="card-header">About</h5>
     <div class="card-body">
+      <div>ServerMonitor checks if a site is down for everyone or only for you.
+        If it is only down for you, this could have different reasons:
+      </div>
+      <li>Browser: Clear your browser cache with ctrl+shift+r.</li>
+      <li>Router: Try to restart your router and try it again.</li>
+      <li>DNS: Maybe your ISP blocks the domain. Change your DNS, to solve this problem.</li>
+      <br>
+      <h5>How does the ServerMonitor work:</h5>
     </div>
 </div>
 {% endblock %}
