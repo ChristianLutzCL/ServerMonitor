@@ -2,6 +2,7 @@ from flask import render_template, request
 from monitor import app
 from monitor.monitoring import monitor_website
 from monitor.models import CheckedWebsite, updateDatabase
+from sqlalchemy import desc
 
 
 
@@ -13,7 +14,7 @@ def index():
             response = monitor_website(url)
             t = CheckedWebsite(website_url=str(response[0]), response_code=str(response[1]), response_message=str(response[2]))
             updateDatabase(t)
-            o = CheckedWebsite.query.all()
+            o = CheckedWebsite.query.order_by(desc(CheckedWebsite.check_date)).limit(10).all()
             return render_template('index.html', title="Home", response=response, test=o)
         else:
             return render_template('index.html', title="Home", response=["ERROR", "ERROR", "ERROR"])
