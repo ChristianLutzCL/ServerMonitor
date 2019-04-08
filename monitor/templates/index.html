@@ -44,20 +44,20 @@
 {% block leftcol %}
 <div class="container shadow p-2 mb-5 bg-white rounded">
     <h5 class="card-header">Recent checked Websites</h5>
-    {% for t in test %}
+    {% for query in database_query %}
     <div class="card-body">
         <div class="card" style="width: auto;">
-            {% if t.response_code == '200' %}
+            {% if query.response_code == '200' %}
             <div class="card-header bg-success text-center">
             {% else %}
             <div class="card-header bg-danger text-center">
             {% endif %}
-              {{ t.website_url }} {% if t.response_code == '200'%} is Online! {% else %} is Offline! {% endif %}
+              {{ query.website_url }} {% if query.response_code == '200'%} is Online! {% else %} is Offline! {% endif %}
             </div>
             <ul class="list-group list-group-horizontal-xl flex-fill mx-auto border-0">
-                <li class="list-group-item border-0">Date: {{ t.check_date }}</li>
-                <li class="list-group-item border-0">Code: {{ t.response_code }}</li>
-                <li class="list-group-item border-0">Response: {{ t.response_message }}</li>
+                <li class="list-group-item border-0">Date: {{ query.check_date }}</li>
+                <li class="list-group-item border-0">Code: {{ query.response_code }}</li>
+                <li class="list-group-item border-0">Response: {{ query.response_message }}</li>
             </ul>
         </div>
     </div>
