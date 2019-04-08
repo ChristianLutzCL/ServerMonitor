@@ -13,7 +13,6 @@ class CheckedWebsite(db.Model):
         return '{} {} {} {}'.format(self.check_date, self.website_url, self.response_code, self.response_message)
 
 
-
 def updateDatabase(response):
     db.session.add(response)
     db.session.commit()
