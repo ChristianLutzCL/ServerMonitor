@@ -8,7 +8,7 @@
   <div class="card-body">
   <form method="POST">
     <div class="input-group mb-3">
-      <input type="url" id="url" name="url" class="form-control" placeholder="https://www.google.com" aria-describedby="button-addon2">
+      <input type="text" id="url" name="url" class="form-control" placeholder="https://www.google.com" aria-describedby="button-addon2">
         <div class="input-group-append">
           <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Check</button>
         </div>
@@ -20,7 +20,7 @@
           <h6 class="mb-1">Website Response for {{ response[0] }}</h6>
         </div>
       </a>  
-      <li class="list-group-item"><a class="font-weight-bold">Checked URL:</a> {{ response[0] }}</li>
+      <li class="list-group-item"><a class="font-weight-bold">Checked URL:</a> <a class="text-dark" target="_tab" href="{{ response[0] }}">{{ response[0] }}</a></li>
       <li class="list-group-item"><a class="font-weight-bold">Response:</a> {{ response[2] }}</li>
       <li class="list-group-item"><a class="font-weight-bold">Response code:</a> {{ response[1] }}</li>
     </ul>
