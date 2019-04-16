@@ -1,8 +1,9 @@
 # Folder
 __pycache__
-.vscode
+.vscode/
 venv
 
 #Files
 *.pyc
 *.pyo
+monitor\.site.db
