@@ -4,7 +4,7 @@ from datetime import datetime
 
 class CheckedWebsite(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    check_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow())
+    check_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     website_url = db.Column(db.String(80), unique=False, nullable=True)
     response_code = db.Column(db.String(10), unique=False, nullable=True)
     response_message = db.Column(db.String(10), unique=False, nullable=True)
