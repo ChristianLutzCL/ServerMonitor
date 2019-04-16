@@ -7,3 +7,4 @@ venv
 *.pyc
 *.pyo
 monitor\.site.db
+monitor/site.db
