@@ -8,7 +8,7 @@
   <div class="card-body">
   <form method="POST">
     <div class="input-group mb-3">
-      <input type="text" id="url" name="url" class="form-control" placeholder="https://www.google.com" aria-describedby="button-addon2">
+      <input type="url" id="url" name="url" class="form-control" placeholder="https://www.google.com" aria-describedby="button-addon2">
         <div class="input-group-append">
           <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Check</button>
         </div>
@@ -17,7 +17,7 @@
     <ul class="list-group" style="width:auto">
       <a class="list-group-item list-group-item-action active">
         <div class="d-flex w-100 justify-content-between">
-          <h6 class="mb-1">Website Response for {{ response[0] }}</h6>
+          <h6 class="mb-1">{{ response[0] }} {% if response[3] == False %} is Online! 😁 {% else %} is Offline! 😧 {% endif %}</h6>
         </div>
       </a>  
       <li class="list-group-item"><a class="font-weight-bold">Checked URL:</a> <a class="text-dark" target="_tab" href="{{ response[0] }}">{{ response[0] }}</a></li>
@@ -55,7 +55,7 @@
               {{ query.website_url }} {% if query.response_code == '200'%} is Online! {% else %} is Offline! {% endif %}
             </div>
             <ul class="list-group list-group-horizontal-xl flex-fill mx-auto border-0">
-                <li class="list-group-item border-0">Date: {{ query.check_date }}</li>
+                <li class="list-group-item border-0">Date: {{ query.check_date.strftime("%d-%m-%Y, %H:%M:%S") }} UTC</li>
                 <li class="list-group-item border-0">Code: {{ query.response_code }}</li>
                 <li class="list-group-item border-0">Response: {{ query.response_message }}</li>
             </ul>
