@@ -11,11 +11,8 @@ def index():
 
     if request.method == 'POST' and request.form['url'] != '':
         url = request.form['url']
-
-        t = ping(url)
-        response = monitor_website(t)
-
-        database_return = CheckedWebsite(website_url=str(response[0]), response_code=str(response[1]), response_message=str(response[2]))
+        response = monitor_website(ping(url))
+        database_return = CheckedWebsite(website_url=str(response[0]), response_code=str(response[1]), response_message=str(response[2]), isdown=response[3])
         updateDatabase(database_return)
         database_query_update = CheckedWebsite.query.order_by(desc(CheckedWebsite.check_date)).limit(10).all()
         return render_template('index.html', title="Home", response=response, database_query=database_query_update)
