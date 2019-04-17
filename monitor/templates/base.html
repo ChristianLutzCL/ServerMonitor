@@ -10,6 +10,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+
     <title>{% block title %}{% endblock %}</title>
   </head>
 
@@ -29,9 +31,9 @@
         </div>
       </div>
     </nav>
-    <div style="position: relative; min-height: 170vh;">
+    <div style="position: relative; min-height: 90vh; height: 1500px;">
     <div class="container-fluid" style="padding-bottom: 2.5rem;">
-      <div class="row p-2" style="margin-top: 56px">
+      <div class="row p-2" style="margin-top: 71px; margin-bottom: 15px">
         <div class="col-sm">
           {% block content %}{% endblock %}
         </div>
@@ -41,17 +43,19 @@
       </div>
     </div>
     <!-- Footer -->
-  <footer class="page-footer font-small bg-dark" style="position: absolute; bottom: 0; width: 100%; height: 120px">
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-3 text-white">Made with ❤ in Germany | © 2019
-    <p>Powered by InspiredProgrammer</p>
-    <a href="mailto:chris@inspiredprogrammer.com">chris@inspiredprogrammer.com</a>
-  </div>
-  <!-- Copyright -->
-  </footer>
 </div>
+<footer class="page-footer font-small bg-dark" style="position: relative; bottom: 0; width: 100%; height: 120px">
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3 text-white">Made with ❤ in Germany | © 2019
+      <p>Powered by InspiredProgrammer</p>
+      <a href="mailto:chris@inspiredprogrammer.com">chris@inspiredprogrammer.com</a>
+    </div>
+    <!-- Copyright -->
+    </footer>
+
 </body>
 
+  
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
