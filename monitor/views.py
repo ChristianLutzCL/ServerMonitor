@@ -1,6 +1,6 @@
 from flask import render_template, request
 from monitor import app
-from monitor.monitoring import monitor_website, ping, get_server_ip
+from monitor.monitoring import monitor_website, ping, get_server_ip, check_latency, get_server_location
 from monitor.models import CheckedWebsite, updateDatabase
 from sqlalchemy import desc
 
@@ -12,11 +12,13 @@ def index():
     if request.method == 'POST' and request.form['url'] != '':
         url = request.form['url']
         response = monitor_website(ping(url))
-        ip = get_server_ip(url)
+        server_ip = get_server_ip(url)
+        server_latency = check_latency(url)
+        server_loc = get_server_location(server_ip)
         database_return = CheckedWebsite(website_url=str(response[0]), response_code=str(response[1]), response_message=str(response[2]), isdown=response[3])
         updateDatabase(database_return)
         database_query_update = CheckedWebsite.query.order_by(desc(CheckedWebsite.check_date)).limit(10).all()
-        return render_template('index.html', title="Home", response=response, ip=ip, database_query=database_query_update)
+        return render_template('index.html', title="Home", response=response, ip=server_ip, lat=server_latency, loc=server_loc, database_query=database_query_update)
     else:
         return render_template('index.html', title="Home", response=monitor_website("https://www.google.com"), database_query=database_query)
 
