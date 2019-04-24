@@ -4,59 +4,46 @@
 
 {% block content %}
 <div class="container-fluid shadow-sm p-2 mb-5 bg-white rounded">
-        <h5 class="card-header">Information</h5>
-        <div class="card-body">
-          <div style="width: 600px">
-            <canvas id="myChart" width="400" height="400"></canvas>  
-            <script>
-                var ctx = document.getElementById('myChart').getContext('2d');
-                var myChart = new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: ['{{ title }}'],
-                        datasets: [{
-                            data: [12, 19, 3, 5, 2, 3],
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.2)',
-                                'rgba(54, 162, 235, 0.2)',
-                                'rgba(255, 206, 86, 0.2)',
-                                'rgba(75, 192, 192, 0.2)',
-                                'rgba(153, 102, 255, 0.2)',
-                                'rgba(255, 159, 64, 0.2)'
-                            ],
-                            borderColor: [
-                                'rgba(255, 99, 132, 1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(153, 102, 255, 1)',
-                                'rgba(255, 159, 64, 1)'
-                            ],
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            yAxes: [{
-                                ticks: {
-                                    beginAtZero: true
-                                }
-                            }]
-                        }
-                    }
-                });
-                </script>
-          </div>
+    <h5 class="card-header">Changelog</h5>
+        <div class="card-body"> 
+            <h6>Version 1.0.0</h6>
+            <a>- Initial release</a>
         </div>
-      </div>
+</div>
 {% endblock %}
 
 {% block leftcol %}
 <div class="container-fluid shadow-sm p-2 mb-5 bg-white rounded">
-        <h5 class="card-header">Get in touch</h5>
+    <h5 class="card-header">Send me a Message</h5>
         <div class="card-body">
-            
+                <div class="container contact-form">
+                        <div class="contact-image">
+                            <img src="\static\img\contactform_mail.jpg" alt="Illustration Credit: https://de.vecteezy.com" class="img-fluid mx-auto" style="max-width: 40%; display: block;">
+                        </div>
+                        <form method="post" action="mailto:chris@inspiredprogrammer.com">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <input type="text" name="txtName" class="form-control" placeholder="Your Name *" value="" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="txtEmail" class="form-control" placeholder="Your Email *" value="" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="txtWebsite" class="form-control" placeholder="Your Website" value="" />
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea name="txtMsg" class="form-control" placeholder="Your Message *" rows="5"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" name="btnSubmit" class="btn btn-primary" value="Send Message" />
+                                    </div>
+                                </div>  
+                            </div>
+                        </form>
+                        <small style="font-size:0.6em" class="text-muted">Illustration Credit: <a href="https://de.vecteezy.com">https://de.vecteezy.com</a></small>
+            </div>      
         </div>
-      </div>
+</div>
 {% endblock %}
 
