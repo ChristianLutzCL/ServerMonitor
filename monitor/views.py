@@ -18,14 +18,14 @@ def index():
         database_return = CheckedWebsite(website_url=str(response[0]), response_code=str(response[1]), response_message=str(response[2]), isdown=response[3])
         updateDatabase(database_return)
         database_query_update = CheckedWebsite.query.order_by(desc(CheckedWebsite.check_date)).limit(10).all()
-        return render_template('index.html', title="Home", response=response, ip=server_ip, lat=server_latency, loc=server_loc, database_query=database_query_update)
+        return render_template('index.html', title="Is the website down? | ServerMonitor", response=response, ip=server_ip, lat=server_latency, loc=server_loc, database_query=database_query_update)
     else:
-        return render_template('index.html', title="Home", response=monitor_website("https://www.google.com"), database_query=database_query)
+        return render_template('index.html', title="Is the website down? | ServerMonitor", response=monitor_website("https://www.google.com"), lat='-', loc='-', ip='-', database_query=database_query)
 
 
 @app.route("/info", methods=('GET', 'POST'))
 def info():
-    return render_template('info.html', title="Info")
+    return render_template('info.html', title="Info | ServerMonitor")
 
 
 @app.errorhandler(404)
