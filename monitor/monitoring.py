@@ -54,9 +54,9 @@ def get_server_location(ip):
         IPSTACK_KEY = app.config['IPSTACK_API_KEY']
         geo_ip = requests.get('http://api.ipstack.com/' + ip + "?access_key=" + IPSTACK_KEY)
         resp = json.loads(geo_ip.text)
-
-        return resp['region_name']
-
+        loc_obj = resp['location']
+        #return resp['region_name']
+        return resp['city'], loc_obj['country_flag']
 
 def tracert(): #TODO tracert
     pass
