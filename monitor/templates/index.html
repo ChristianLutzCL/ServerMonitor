@@ -32,7 +32,7 @@
             <ul class="list-group" style="width:auto">
                 <li class="list-group-item"><a class="font-weight-bold">IP-Adress:</a> <a>{{ ip }}</a></li>
                 <li class="list-group-item"><a class="font-weight-bold">Latency:</a> <a>{{ lat }} seconds</a></li>
-                <li class="list-group-item"><a class="font-weight-bold">Server Location:</a> <a>{{ loc }}</a></li>
+                <li class="list-group-item"><a class="font-weight-bold">Server Location:</a> <a>{{ loc[0] }} <img src="{{ loc[1] }}" alt="" width="25" height="15"></a></li>
               </ul>
           </div>
     </div>
@@ -41,16 +41,27 @@
 <div class="container shadow-sm p-2 mb-5 bg-white rounded">
     <h5 class="card-header">What's this ServerMonitor?</h5>
     <div class="card-body">
-      <p>ServerMonitor is a a web application for testing the status of servers/websites.</p>
-      <p>It sends a request to the website you want to check and gives you some information about the response.</p>
+      <a>"ServerMonitor" is a web application for monitoring the status of web sites.</a>
+      <a>It sends a request to the website you want to check and gives you some information about the response.</a>
       <p></p>
+      <a>monitor.inspiredprogrammer.com's server is located in Frankfurt am Main, Germany.</a>
+      <p>Hosted by <a target="_tab" href="https://www.digitalocean.com">DigitalOcean</a>.  💪</p>
+      <p></p>
+      <h5>How to use it?</h5>
+      <a>Simply enter the URL of the web site you want to check and push "Check".</a>
+      <a>After pressing the button, "ServerMonitor" will send a request to the web site.</a>
+      <a>It may take a short time for the result to be displayed.</a>
+      <img src="/static/img/explaining_servermonitor.png" class="img-fluid">
+      <p></p>
+      <h5>Found a bug or have an idea for a new feature?</h5>
+      <a>Visit the <a target="_tab" href="https://github.com/ChristianLutzCL/Website-Monitoring/issues">Github repository</a> and fill an issue.</a>
     </div>
 </div>
 {% endblock %}
 
 {% block leftcol %}
 <div class="container shadow-sm p-2 mb-5 bg-white rounded">
-    <h5 class="card-header">Recent checked Websites</h5>
+    <h5 class="card-header">Recently checked websites</h5>
     {% for query in database_query %}
     <div class="card-body">
         <div class="card" style="width: auto;">
