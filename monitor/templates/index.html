@@ -8,22 +8,22 @@
   <div class="card-body" id="loadingmask">
   <form method="POST">
     <div class="input-group mb-3">
-      <input type="url" id="url" name="url" class="form-control" placeholder="https://www.google.com" aria-describedby="button-addon2" data-toggle="tooltip" data-placement="top" title="Your URL need a prefix like 'https://' or 'http://'">
+      <input type="url" id="url" name="url" class="form-control" value="{{ host }}" placeholder="https://www.google.com" aria-describedby="button-addon2" data-toggle="tooltip" data-placement="top" title="Your URL need a prefix like 'https://' or 'http://'">
         <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="submit" id="button-addon2" onclick="myFunction()">Check</button>
+          <button class="btn btn-outline-secondary" type="submit" id="button-addon2" onclick="checkHost()">Check</button>
         </div>
     </div>
   </form>
     <ul class="list-group" style="width:auto">
-      <a class="list-group-item list-group-item-action {% if response[3] == False %} list-group-item-success {% else %} list-group-item-danger {% endif %}" data-toggle="collapse" href="#additionalInformation" role="button" aria-expanded="false" aria-controls="additionalInformation">
+      <a class="list-group-item list-group-item-action {% if isdown == False %} list-group-item-success {% else %} list-group-item-danger {% endif %}" data-toggle="collapse" href="#additionalInformation" role="button" aria-expanded="false" aria-controls="additionalInformation">
         <div class="d-flex w-100 justify-content-between">
-          <h6 class="mb-1">{{ response[0] }} {% if response[3] == False %} is Online! 😁 {% else %} is Offline! 😧 {% endif %}</h6> <!--- TODO: Implement favicon -->
+          <h6 class="mb-1">{{ url }} {% if isdown == False %} is Online! 😁 {% else %} is Offline! 😧 {% endif %}</h6> <!--- TODO: Implement favicon -->
           <div class="material-icons">expand_more</div>
         </div>
       </a>  
-      <li class="list-group-item"><a class="font-weight-bold">Checked URL:</a> <a class="text-dark" target="_tab" href="{{ response[0] }}">{{ response[0] }}</a></li>
-      <li class="list-group-item"><a class="font-weight-bold">Response code:</a> {% if response[1] == 200 %} <a target="_tab" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/{{ response[1] }}" class="text-success font-weight-bold">{{ response[1] }}</a> {% else %} <a target="_tab" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/{{ response[1] }}" class="text-danger font-weight-bold">{{ response[1] }}</a>{% endif %}</li>
-      <li class="list-group-item"><a class="font-weight-bold">Response:</a> {{ response[2] }}</li>
+      <li class="list-group-item"><a class="font-weight-bold">Checked URL:</a> <a class="text-dark" target="_tab" href="{{ url }}">{{ url }}</a></li>
+      <li class="list-group-item"><a class="font-weight-bold">Response code:</a> {% if status_code == 200 %} <a target="_tab" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/{{ status_code }}" class="text-success font-weight-bold">{{ status_code }}</a> {% else %} <a target="_tab" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/{{ status_code }}" class="text-danger font-weight-bold">{{ status_code }}</a>{% endif %}</li>
+      <li class="list-group-item"><a class="font-weight-bold">Response:</a> {{ status_reason }}</li>
     </ul>
     <div>
         <div class="collapse" id="additionalInformation">
@@ -88,6 +88,20 @@
     function myFunction(){
       $("#loadingmask").fadeTo(2, 0.3);
     }
+</script>
+
+<script>
+  function checkHost(){
+    var h = document.getElementById('url').value.toLowerCase();
+    h = h.startsWith("http://")? h.substring(7): h
+    h = h.startsWith("https://") ? h.substring(8) : h
+    h = h.indexOf("/") > 0 ? h.substring(0,h.indexOf("/")) : h
+    var domain = '/' + h;
+    console.log(domain)
+    window.location = h;
+    console.log(window.location)
+    return false;
+  };
 </script>
 
 {% endblock %}
