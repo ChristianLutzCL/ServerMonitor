@@ -2,7 +2,7 @@ from monitor import app
 import requests, re, socket, json
 
 def ping(url, prefix="https://"):
-
+    
     if check_valid_url(url) != 'ERROR':
         return prefix + check_valid_url(url)
     else:
@@ -11,16 +11,28 @@ def ping(url, prefix="https://"):
 
 def monitor_website(url):
     try:
-        r = requests.get(url)
+        r = requests.head(url, timeout=2, stream=True, allow_redirects=True)
+
         if r.status_code == 200:
-            print(r.status_code)
-            # return r.url, r.status_code, r.reason, isdown
-            return r.url, r.status_code, r.reason, False 
+            # return r.url | r.status_code | r.reason | server_ip | latency | server_location | isdown
+            server_ip = get_server_ip(url)
+            server_location = get_server_location(server_ip)
+            latency = check_latency(url)
+            #return 'url=%r, status_code=%r, status_reason=%r, server_ip=%r, server_latency=%r, server_loaction=%r, isdown=%r' % (r.url, r.status_code, r.reason, server_ip, latency, server_location, False)
+            return r.url, r.status_code, r.reason, server_ip, latency, server_location, False
         elif r.status_code != 200:
-            print(r.status_code)
-            return r.url, r.status_code, r.reason, True 
-    except:
-        return url, 'none', 'none', True
+            server_ip = get_server_ip(url)
+            server_location = get_server_location(server_ip)
+            latency = check_latency(url)
+            #return 'url=%r, status_code=%r, status_reason=%r, server_ip=%r, server_latency=%r, server_loaction=%r, isdown=%r' % (r.url, r.status_code, r.reason, server_ip, latency, server_location, True)
+            return r.url, r.status_code, r.reason, server_ip, latency, server_location, True
+    except Exception as e:
+        if "Timeout" in repr(e):
+            server_ip = get_server_ip(url)
+            server_location = get_server_location(server_ip)
+            #return 'url=%r, status_code=%r, status_reason=%r, server_ip=%r, server_latency=%r, server_loaction=%r, isdown=%r' % (url, 'NONE', 'NONE', server_ip, 'NONE', server_location, True)
+            return url, 'NONE', 'NONE', server_ip, 'NONE', server_location, True
+
 
 
 def check_valid_url(url):
@@ -40,9 +52,10 @@ def check_valid_url(url):
 
 def check_latency(url):
     try:
-        return requests.get(url).elapsed.total_seconds()
-    except:
-        return 'Timeout error'
+        return requests.head(url).elapsed.total_seconds()
+    except Exception as e:
+        if "Timeout" in repr(e):
+            return 'Timeout error'
 
 
 def get_server_ip(url):
