@@ -1,2 +1,3 @@
 # Website-Monitoring
-<img src="https://github.com/LosBopfos/Website-Monitoring/blob/master/servermonitor-mockup-screely.png" height="400">
+<img src="https://i.imgur.com/abCnQsI.png" height="550">
+
