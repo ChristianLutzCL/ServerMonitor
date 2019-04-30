@@ -14,5 +14,5 @@ app.config['IPSTACK_API_KEY'] = environ.get('IPSTACK_KEY')
 #app.config.from_envvar('APP_SETTINGS')
 db = SQLAlchemy(app)
 
-from monitor import views
+from monitor import views, forms
 
