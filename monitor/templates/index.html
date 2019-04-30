@@ -3,63 +3,70 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-<div class="container shadow-sm p-2 mb-5 bg-white rounded">
-  <h5 class="card-header">Check Server Status</h5>
-  <div class="card-body" id="loadingmask">
-  <form method="POST">
-    <div class="input-group mb-3">
-      <input type="url" id="url" name="url" class="form-control" value="{{ host }}" placeholder="https://www.google.com" aria-describedby="button-addon2" data-toggle="tooltip" data-placement="top" title="Your URL need a prefix like 'https://' or 'http://'">
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="submit" id="button-addon2" onclick="checkHost()">Check</button>
-        </div>
-    </div>
-  </form>
-    <ul class="list-group" style="width:auto">
-      <a class="list-group-item list-group-item-action {% if isdown == False %} list-group-item-success {% else %} list-group-item-danger {% endif %}" data-toggle="collapse" href="#additionalInformation" role="button" aria-expanded="false" aria-controls="additionalInformation">
-        <div class="d-flex w-100 justify-content-between">
-          <h6 class="mb-1">{{ url }} {% if isdown == False %} is Online! 😁 {% else %} is Offline! 😧 {% endif %}</h6> <!--- TODO: Implement favicon -->
-          <div class="material-icons">expand_more</div>
-        </div>
-      </a>  
-      <li class="list-group-item"><a class="font-weight-bold">Checked URL:</a> <a class="text-dark" target="_tab" href="{{ url }}">{{ url }}</a></li>
-      <li class="list-group-item"><a class="font-weight-bold">Response code:</a> {% if status_code == 200 %} <a target="_tab" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/{{ status_code }}" class="text-success font-weight-bold">{{ status_code }}</a> {% else %} <a target="_tab" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/{{ status_code }}" class="text-danger font-weight-bold">{{ status_code }}</a>{% endif %}</li>
-      <li class="list-group-item"><a class="font-weight-bold">Response:</a> {{ status_reason }}</li>
-    </ul>
-    <div>
-        <div class="collapse" id="additionalInformation">
-          <p></p>
-          <a class="font-weight-bold">Additional Information:</a>
-            <ul class="list-group" style="width:auto">
-                <li class="list-group-item"><a class="font-weight-bold">IP-Adress:</a> <a>{{ ip }}</a></li>
-                <li class="list-group-item"><a class="font-weight-bold">Latency:</a> <a>{{ lat }} seconds</a></li>
-                <li class="list-group-item"><a class="font-weight-bold">Server Location:</a> <a>{{ loc[0] }} <img src="{{ loc[1] }}" alt="" width="25" height="15"></a></li>
-              </ul>
-          </div>
-    </div>
-  </div>
-</div>
-<div class="container shadow-sm p-2 mb-5 bg-white rounded">
-    <h5 class="card-header">What's this ServerMonitor?</h5>
-    <div class="card-body">
-      <a>"ServerMonitor" is a web application for monitoring the status of web sites.</a>
-      <a>It sends a request to the website you want to check and gives you some information about the response.</a>
-      <p></p>
-      <a>monitor.inspiredprogrammer.com's server is located in Frankfurt am Main, Germany.</a>
-      <p>Hosted by <a target="_tab" href="https://www.digitalocean.com">DigitalOcean</a>.  💪</p>
-      <p></p>
-      <h5>How to use it?</h5>
-      <a>Simply enter the URL of the web site you want to check and press "Check".</a>
-      <a>After pressing the button, "ServerMonitor" will send a request to the web site.</a>
-      <a>It may take a short time for the result to be displayed.</a>
-      <img src="/static/img/explaining_servermonitor.png" class="img-fluid">
-      <p></p>
-      <h5>Found a bug or have an idea for a new feature?</h5>
-      <a>Visit the <a target="_tab" href="https://github.com/ChristianLutzCL/Website-Monitoring/issues">Github repository</a> and fill an issue.</a>
-    </div>
-</div>
-{% endblock %}
 
-{% block leftcol %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <!--- ### Monitoring ### -->
+      <div class="container shadow-sm p-2 mb-5 bg-white rounded">
+          <h5 class="card-header">Check Server Status</h5>
+          <div class="card-body" id="loadingmask">
+          <form method="POST">
+            <div class="input-group mb-3">
+              <input type="url" id="url" name="url" class="form-control" value="{{ host }}" placeholder="https://www.google.com" aria-describedby="button-addon2" data-toggle="tooltip" data-placement="top" title="Your URL need a prefix like 'https://' or 'http://'">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="submit" id="button-addon2" onclick="checkHost()">Check</button>
+                </div>
+            </div>
+          </form>
+            <ul class="list-group" style="width:auto">
+              <a class="list-group-item list-group-item-action {% if isdown == False %} list-group-item-success {% else %} list-group-item-danger {% endif %}" data-toggle="collapse" href="#additionalInformation" role="button" aria-expanded="false" aria-controls="additionalInformation">
+                <div class="d-flex w-100 justify-content-between">
+                  <h6 class="mb-1">{{ url }} {% if isdown == False %} is Online! 😁 {% else %} is Offline! 😧 {% endif %}</h6>
+                  <div class="material-icons">expand_more</div>
+                </div>
+              </a>  
+              <li class="list-group-item"><a class="font-weight-bold">Checked URL:</a> <a class="text-dark" target="_tab" href="{{ url }}">{{ url }}</a></li>
+              <li class="list-group-item"><a class="font-weight-bold">Response code:</a> {% if status_code == 200 %} <a target="_tab" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/{{ status_code }}" class="text-success font-weight-bold">{{ status_code }}</a> {% else %} <a target="_tab" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/{{ status_code }}" class="text-danger font-weight-bold">{{ status_code }}</a>{% endif %}</li>
+              <li class="list-group-item"><a class="font-weight-bold">Response:</a> {{ status_reason }}</li>
+            </ul>
+            <div>
+                <div class="collapse" id="additionalInformation">
+                  <p></p>
+                  <a class="font-weight-bold">Additional Information:</a>
+                    <ul class="list-group" style="width:auto">
+                        <li class="list-group-item"><a class="font-weight-bold">IP-Adress:</a> <a>{{ ip }}</a></li>
+                        <li class="list-group-item"><a class="font-weight-bold">Latency:</a> <a>{{ lat }} seconds</a></li>
+                        <li class="list-group-item"><a class="font-weight-bold">Server Location:</a> <a>{{ loc[0] }} <img src="{{ loc[1] }}" alt="" width="25" height="15"></a></li>
+                      </ul>
+                  </div>
+            </div>
+          </div>
+        </div>
+              <!--- ### Explanation ### --->
+      <div class="container shadow-sm p-2 mb-5 bg-white rounded">
+          <h5 class="card-header">What's this ServerMonitor?</h5>
+            <div class="card-body">
+              <a>"ServerMonitor" is a web application for monitoring the status of web sites.</a>
+              <a>It sends a request to the website you want to check and gives you some information about the response.</a>
+              <p></p>
+              <a>monitor.inspiredprogrammer.com's server is located in Frankfurt am Main, Germany.</a>
+              <p>Hosted by <a target="_tab" href="https://www.digitalocean.com">DigitalOcean</a>.  💪</p>
+              <p></p>
+              <h5>How to use it?</h5>
+              <a>Simply enter the URL of the web site you want to check and press "Check".</a>
+              <a>After pressing the button, "ServerMonitor" will send a request to the web site.</a>
+              <a>It may take a short time for the result to be displayed.</a>
+              <img src="/static/img/explaining_servermonitor.png" class="img-fluid">
+              <p></p>
+              <h5>Found a bug or have an idea for a new feature?</h5>
+              <a>Visit the <a target="_tab" href="https://github.com/ChristianLutzCL/Website-Monitoring/issues">Github repository</a> and fill an issue.</a>
+            </div>
+        </div>
+      </div>
+    <div class="col">
+      <!--- ### Recent checked ### --->
+
 <div class="container shadow-sm p-2 mb-5 bg-white rounded">
     <h5 class="card-header">Recently checked websites</h5>
     {% for query in database_query %}
@@ -81,6 +88,11 @@
     </div>
    {% endfor %}
 </div>
+    </div>
+  </div>
+</div>
+
+<!--- ### JavaScript ### 
 
 <script>
     document.getElementById('button-addon2').addEventListener('click', myFunction);
@@ -104,5 +116,6 @@
   };
 </script>
 
-{% endblock %}
+-->
 
+{% endblock %}
