@@ -1,8 +1,10 @@
-from flask import render_template, request
+from flask import render_template, request, flash, redirect, url_for
 from monitor import app
 from monitor.monitoring import monitor_website, ping, get_server_ip, check_latency, get_server_location
 from monitor.models import CheckedWebsite, updateDatabase
+from monitor.forms import SignUpForm, SignInForm
 from sqlalchemy import desc
+from flask_bcrypt import Bcrypt
 
 import smtplib
 import os
@@ -59,6 +61,21 @@ def info():
         return render_template('info.html', title="SENT | ServerMonitor")
     else:
         return render_template('info.html', title="Info | ServerMonitor")
+
+
+@app.route("/signup", methods=('GET', 'POST'))
+def signup():
+    form = SignUpForm()
+    if form.validate_on_submit():
+        flash(f'Account created for { form.username.data }!', 'success')
+        return redirect(url_for('index'))
+    return render_template('signup.html', title="Sign Up | ServerMonitor", form=form)
+
+
+@app.route("/signin", methods=('GET', 'POST'))
+def signin():
+    form = SignInForm()
+    return render_template('signin.html', title="Sign In | ServerMonitor", form=form)
 
 
 @app.errorhandler(404)
