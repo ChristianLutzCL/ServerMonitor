@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <div class="container-fluid shadow-sm p-2 mb-5 bg-white rounded">
+                <h5 class="card-header">Account</h5>
+                    <div class="card-body"> 
+                        <div class="media">
+                            <img class="rounded-circle account-img" src="{{ image_file }}" style="margin-right: 20px;" alt="">
+                            <div class="media-body">
+                                <h2 class="account-heading">{{ current_user.username }}</h2>
+                                <p class="text-secondary">{{ current_user.email }}</p>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="container-fluid shadow-sm p-2 mb-5 bg-white rounded">
+                <h5 class="card-header">Send me a Message</h5>
+                    <div class="card-body">
+                              
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
