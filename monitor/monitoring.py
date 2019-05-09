@@ -73,3 +73,6 @@ def get_server_location(ip):
 
 def tracert(): #TODO tracert
     pass
+
+def func(x):
+    return x + 1
