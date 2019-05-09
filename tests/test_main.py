@@ -1,5 +1,4 @@
 import pytest
-from monitor import monitoring
-
+from monitor.monitoring import func
 def test_answer():
     assert func(3) == 5
