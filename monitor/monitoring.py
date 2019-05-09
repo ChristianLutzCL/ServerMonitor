@@ -75,4 +75,4 @@ def tracert(): #TODO tracert
     pass
 
 def func(x):
-    return x + 1
+    return x
