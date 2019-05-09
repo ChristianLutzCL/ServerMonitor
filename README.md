@@ -1,5 +1,7 @@
 # ServerMonitor
 
+[![Build Status](https://travis-ci.org/ChristianLutzCL/Website-Monitoring.svg?branch=master)](https://travis-ci.org/ChristianLutzCL/Website-Monitoring)
+
 [ServerMonitor](https://monitor.inspiredprogrammer.com) is a web application for monitoring the status of web pages based on their response. It also gives you additional information about the website like IP adress, ping and the location of the web server.
 
 <p align="center">
