@@ -35,7 +35,7 @@
           {% if current_user.is_authenticated %}
             <a class="nav-item nav-link text-light" style="margin-right: 16px" href="{{ url_for('logout') }}">Log Out</a>
             <a class="d-inline-block align-middle" href="{{ url_for('account') }}">
-            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="" width="40" height="40" class="rounded-circle border border-white">
+            <img src="{{ url_for('static', filename='profile_pictures/' + current_user.image_file) }}" alt="" width="40" height="40" class="rounded-circle border border-white">
             </a>
           {% else %}
             <a class="nav-item nav-link text-light" style="margin-right: 16px" href="{{ url_for('login') }}">Log In</a>
