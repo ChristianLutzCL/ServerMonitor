@@ -1,4 +1,3 @@
-
 import pytest
 from monitor.monitoring import func
 
