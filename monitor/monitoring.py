@@ -72,7 +72,9 @@ def get_server_location(ip):
         return resp['city'], loc_obj['country_flag']
 
 def tracert(): #TODO tracert
-    pass
+    return 0
+
 
 def func(x):
     return x
+    
