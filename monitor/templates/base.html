@@ -16,34 +16,49 @@
 
     <title>{% block title %}{% endblock %}</title>
   </head>
-
   <body class="bg-light">
     <div id="page-container" style="position: relative; min-height: 100vh;">
       <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark shadow">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="{{url_for('index')}}">
         <img src="/static/img/icon.svg" width="30" height="30" class="d-inline-block align-top" alt="">
         ServerMonitor
       </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
+      <div class="collapse navbar-collapse" id="navbarToggle">
+        <div class="navbar-nav mr-auto">
           <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
           <a class="nav-item nav-link" href="/info">Info</a>
         </div>
+        <div class="navbar-nav">
+          {% if current_user.is_authenticated %}
+            <a class="nav-item nav-link text-light" style="margin-right: 16px" href="{{ url_for('logout') }}">Log Out</a>
+            <a class="d-inline-block align-middle" href="{{ url_for('account') }}">
+            <img src="{{ url_for('static', filename='profile_pictures/' + current_user.image_file) }}" alt="" width="40" height="40" class="rounded-circle border border-white">
+            </a>
+          {% else %}
+            <a class="nav-item nav-link text-light" style="margin-right: 16px" href="{{ url_for('login') }}">Log In</a>
+            <a class="nav-item nav-link border text-light rounded" href="{{ url_for('signup') }}">Sign Up</a>
+          {% endif %}
+        </div>
       </div>
       </nav>
-        <div class="container-fluid" style="padding-bottom: 80px">
-          <div class="row p-2" style="margin-top: 71px; margin-bottom: 15px">
-            <div class="col-sm">
-            {% block content %}{% endblock %}
+
+      <div class="container-fluid" style="padding-top: 80px; padding-bottom: 100px">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+              {{ message }}
             </div>
-            <div class="col-sm">
-            {% block leftcol %}{% endblock %}
-            </div>
-          </div>
-        </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        {% block content%}{% endblock %}
+      </div>
+
       <footer class="page-footer font-small bg-dark" style="position: absolute; bottom: 0; width: 100%; height: 120px">
         <div class="footer-copyright text-center py-3 text-white">Made with ❤ in Germany | © 2019
           <p>Powered by InspiredProgrammer</p>
