@@ -1,4 +1,4 @@
-from monitor import app
+from flask import current_app
 import requests, re, socket, json
 
 def ping(url, prefix="https://"):
@@ -64,7 +64,7 @@ def get_server_ip(url):
 
 
 def get_server_location(ip):
-        IPSTACK_KEY = app.config['IPSTACK_API_KEY']
+        IPSTACK_KEY = current_app.config['IPSTACK_API_KEY']
         geo_ip = requests.get('http://api.ipstack.com/' + ip + "?access_key=" + IPSTACK_KEY)
         resp = json.loads(geo_ip.text)
         loc_obj = resp['location']

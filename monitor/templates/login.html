@@ -51,11 +51,11 @@
 </div>
 <div class="mx-auto container border-top pt-2">
     <small class="text-muted">
-        Need An Account? <a class="ml-2" href="{{ url_for('signup') }}">Sign Up</a>
+        Need An Account? <a class="ml-2" href="{{ url_for('users.signup') }}">Sign Up</a>
     </small>
     <br>
     <small class="text-muted">
-        <a class="ml-2" href="{{url_for('reset_request')}}">Reset password</a>
+        <a class="ml-2" href="{{url_for('users.reset_request')}}">Reset password</a>
     </small>
 </div>
 {% endblock %}
