@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Log In | ServerMonitor{% endblock %}
+
+{% block content %}
+<div class="mx-auto container shadow-sm bg-white rounded">
+    <div class="content-section card-body">
+        <form method="POST", action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Reset your Password</legend>
+                <div class="form-group">
+                    {{ form.email.label(class="form-control-label") }}
+
+                    {% if form.email.errors %}
+                    {{ form.email(class="form-control is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.email.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                        {{ form.email(class="form-control form-control") }}
+                    {% endif %}     
+
+                </div>
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
