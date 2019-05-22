@@ -33,11 +33,17 @@
         </div>
         <div class="navbar-nav">
           {% if current_user.is_authenticated %}
-            <a class="nav-item nav-link text-light" style="margin-right: 16px" href="{{ url_for('users.logout') }}">Log Out</a>
-            <a class="d-inline-block align-middle" href="{{ url_for('users.account') }}">
-            <img src="{{ url_for('static', filename='profile_pictures/' + current_user.image_file) }}" alt="" width="40" height="40" class="rounded-circle border border-white">
+              <img src="{{ url_for('static', filename='profile_pictures/' + current_user.image_file) }}" alt="" class="rounded-circle border border-white dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" width="40" height="40">
+              <div class="dropdown-menu dropdown-menu-right">
+                  <li class="list-group-item border-0">
+                    <a href="{{ url_for('users.account') }}" role="button">Account</a>
+                  </li>
+                  <li class="list-group-item border-0">
+                      <a href="{{ url_for('users.logout') }}" role="button">Log Out</a>
+                    </li>
+              </div>
             </a>
-          {% else %}
+            {% else %}
             <a class="nav-item nav-link text-light" style="margin-right: 16px" href="{{ url_for('users.login') }}">Log In</a>
             <a class="nav-item nav-link border text-light rounded" href="{{ url_for('users.signup') }}">Sign Up</a>
           {% endif %}
@@ -88,28 +94,6 @@
   ga('send', 'pageview');
   </script>
   <!-- End Google Analytics -->
-
-  <script>
-      function onLoad(loading, loaded) {
-        if(document.readyState === 'complete'){
-            return loaded();
-        }
-        loading();
-        if (window.addEventListener) {
-            window.addEventListener('loading', loaded, false);
-        }
-        else if (window.attachEvent) {
-            window.attachEvent('onload', loaded);
-        }
-    };
-    
-    onLoad(function(){
-       console.log('I am waiting for the page to be loaded');
-    },
-    function(){
-        console.log('The page is loaded');
-    });
-  </script>
 
 </body>
 </html>
