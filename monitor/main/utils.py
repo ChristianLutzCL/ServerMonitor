@@ -17,15 +17,13 @@ EMAIL_PASSWORD = os.environ.get('EMAIL_PASSWORD')
 
 
 def contact_mail(name, email, website, message):
-    with smtplib.SMTP('smtp.googlemail.com', 587) as smtp:
-        smtp.ehlo()
-        smtp.starttls()
-        smtp.ehlo()
+    msg = Message('InspiredProgrammer ServerMonitor - Contact Form', sender='noreply@inspiredprogrammer.com', recipients=['christian.lutz.privat@gmail.com'])
+    msg.body = f'''
+Mail from: {name},
+Email: {email},
+Website: ({website}),
+--------------------------------------
+Message:
+{message}'''
 
-        smtp.login(EMAIL_ADRESS, EMAIL_PASSWORD)
-
-        subject = 'InspiredProgrammer ServerMonitor - Contact Form'
-        body = 'Mail from ' + name + ', ' + email + ' (' + website + ')\n\n' + message
-        msg = f'Subject: {subject}\n\n{body}'
-
-        smtp.sendmail(EMAIL_ADRESS, EMAIL_ADRESS, msg)
+    mail.send(msg)
