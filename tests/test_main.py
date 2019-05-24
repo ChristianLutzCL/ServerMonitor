@@ -1,5 +1,5 @@
 import pytest
-from monitor.monitoring import func, monitor_website, check_latency
+from monitor.monitoring import func, check_latency
 
 
 def test_answer():
@@ -9,6 +9,3 @@ def test_check_latency():
     url = 'https://monitor.inspiredprogrammer.com'
     assert check_latency(url) != 'Timeout error'
 
-def test_monitor_website():
-    url = "https://monitor.inspiredprogrammer.com"
-    assert monitor_website(url) == None
