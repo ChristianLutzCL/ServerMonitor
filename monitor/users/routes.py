@@ -7,7 +7,7 @@ from flask import render_template, request, flash, redirect, url_for, request
 from monitor import db, bcrypt, mail
 from monitor.monitoring import monitor_website, ping, get_server_ip, check_latency, get_server_location
 from monitor.models import CheckedWebsite, updateDatabase, User
-from monitor.users.forms import SignUpForm, SignInForm, UpdateAccountForm, RequestResetForm, ResetPasswordForm
+from monitor.users.forms import SignUpForm, SignInForm, UpdateAccountForm, RequestResetForm, ResetPasswordForm, AddWebsiteForm
 from flask_login import login_user, current_user, logout_user, login_required
 from flask_mail  import Message
 from sqlalchemy import desc
@@ -103,3 +103,23 @@ def reset_token(token):
         flash(f'Your password has been updated! You are now able to login.', 'success')
         return redirect(url_for('users.login'))
     return render_template('reset_token.html', title="Reset Password | ServerMonitor", form=form)
+
+
+import random
+
+@users.route("/monitoring", methods=('GET', 'POST'))
+@login_required
+def monitoring():
+    form = AddWebsiteForm()
+    
+    data = [] #Data for response time chart
+    data2 = []
+
+    for i in range(24):
+        data.append(random.randint(200, 500))
+
+    for i in range(24):
+        data2.append(random.randint(200, 500))
+
+    return render_template('monitoring.html', title="Monitor your websites | ServerMonitor", form=form, data=data, data2=data2)
+
