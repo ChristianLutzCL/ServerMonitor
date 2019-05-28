@@ -1,0 +1,191 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <div class="container-fluid shadow-sm p-2 mb-5 bg-white rounded">
+                <h5 class="card-header">Monitoring Dashboard</h5>
+                    <div class="card-body"> 
+                        <div class="monitor-menu">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add Website</button>
+                        </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalCenterTitle">Add a website</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="POST", action="">
+                                        {{ form.hidden_tag() }}
+                                        <fieldset class="form-group">
+                                            <div class="form-group">
+                                                {{ form.name.label(class="form-control-label") }}
+                                                {{ form.name(class="form-control form-control") }}
+                                            </div>
+                                            <div class="form-group">
+                                                {{ form.website_url.label(class="form-control-label") }}
+                                                {{ form.website_url(class="form-control form-control") }}
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                  {{ form.submit(class="btn btn-primary") }}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <p></p>
+                          <div class="website-monitor container-fluid shadow-sm p-2 mb-5 bg-white rounded">
+                              <h3>InspiredProgrammer ServerMonitor</h3>
+                              <h5>https://monitor.inspiredprogrammer.com</h5>
+                              <p></p>
+                              <a>Response Time (ms)</a>
+                              <p></p>
+                              <div class="chart-container" style="position: relative; height:140px; width:835px">
+                                  <canvas id="myChart" height="140px" width="835px"></canvas>
+                              </div>
+                              <p></p>
+                              <a>Uptime</a>
+                              <p></p>
+                              <div class="chart-container" style="position: relative; height:140px; width:835px">
+                                  <canvas id="myChart2" height="140px" width="835px"></canvas>
+                              </div>
+                            </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- JS for Chart generation -->
+<script>
+    var data = {{ data }}; //[0, 0, 0, 0, 0, 0, 0, 239, 337, 327, 323, 260, 286, 240, 280, 358, 302, 226, 242, 259, 314, 360, 297, 260]
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'line',
+    
+        // The data for our dataset
+        data: {
+            labels: ['00:00', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '00:00'],
+            datasets: [{
+                //label: 'My First dataset',
+                //borderColor: 'rgb(0, 0, 0)',
+                backgroundColor: 'rgb(255, 255, 255)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: data
+            }]
+        },
+    
+        // Configuration options go here
+        options: {
+          tooltips: {
+            enabled: true,
+            backgroundColor: 'rgba(255, 100, 1)'
+          },
+          scales: {
+            yAxes: [{
+              gridLines: {
+                display: false,
+              },
+              ticks: {
+                display: true,
+                beginAtZero: true,
+                stepSize: 100
+              }
+            }],
+            xAxes: [{
+              gridLines: {
+                display: false,
+              },
+              ticks: {
+                display: true,
+                stepSize: 1
+              }
+            }]
+          },
+          legend: {
+            display: false
+          },
+          title: {
+            display: false
+          }
+        }
+    });
+</script>
+
+<script>
+    var data = {{ data2 }}; //[0, 0, 0, 0, 0, 0, 0, 239, 337, 327, 323, 260, 286, 240, 280, 358, 302, 226, 242, 259, 314, 360, 297, 260]
+
+    console.log('Data: ' + data)
+
+    var ctx = document.getElementById('myChart2').getContext('2d');
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'line',
+    
+        // The data for our dataset
+        data: {
+            labels: ['00:00', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '00:00'],
+            datasets: [{
+                //label: 'My First dataset',
+                borderColor: 'rgb(0, 0, 0)',
+                //borderColor: 'rgb(255, 99, 132)',
+                data: data
+            }]
+        },
+    
+        // Configuration options go here
+        options: {
+          tooltips: {
+            enabled: true,
+            backgroundColor: 'rgba(255, 100, 1)'
+          },
+          scales: {
+            yAxes: [{
+              gridLines: {
+                display: false,
+              },
+              ticks: {
+                display: true,
+                beginAtZero: true,
+                stepSize: 100
+              }
+            }],
+            xAxes: [{
+              gridLines: {
+                display: false,
+              },
+              ticks: {
+                display: true,
+                stepSize: 1
+              }
+            }]
+          },
+          legend: {
+            display: false
+          },
+          title: {
+            display: false
+          }
+        }
+    });
+</script>
+
+{% endblock %}
