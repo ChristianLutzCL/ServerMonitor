@@ -21,8 +21,8 @@ class CheckedWebsite(db.Model):
         return '{} {} {} {} {}'.format(self.check_date, self.website_url, self.response_code, self.response_message, self.isdown)
 
 
-
 class User(db.Model, UserMixin):
+    # Basic Account Model
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), unique=True, nullable=False)
     email = db.Column(db.String(20), unique=True, nullable=False)
