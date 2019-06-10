@@ -46,6 +46,18 @@ class User(db.Model, UserMixin):
         return f"User('{self.username}', {self.email}', {self.image_file}')"
 
 
+
+class ContiniousMonitoring(db.Model)
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer)
+    creation_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    website_url = db.Column(db.String(20), nullable=False)
+    isRunning = db.Column(db.Boolean)
+    response_time = db.Column(db.String(60), nullable=False)
+    up_time = db.Column(db.String(60), nullable=False)
+
+
+
 def updateDatabase(response):
     db.session.add(response)
     db.session.commit()
