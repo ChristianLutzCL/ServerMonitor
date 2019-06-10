@@ -12,6 +12,8 @@ from flask_login import login_user, current_user, logout_user, login_required
 from flask_mail  import Message
 from sqlalchemy import desc
 
+import time
+
 from monitor.users.utils import save_picture, send_reset_email
 
 users = Blueprint('users', __name__)
@@ -111,15 +113,21 @@ import random
 @login_required
 def monitoring():
     form = AddWebsiteForm()
-    
-    data = [] #Data for response time chart
-    data2 = []
 
-    for i in range(24):
-        data.append(random.randint(200, 500))
+    if form.is_submitted:
 
-    for i in range(24):
-        data2.append(random.randint(200, 500))
+        data = [] #Data for response time chart
+        data2 = []
 
-    return render_template('monitoring.html', title="Monitor your websites | ServerMonitor", form=form, data=data, data2=data2)
+        for i in range(24):
+            #time.sleep(0.1)
+            data.append(check_latency('https://monitor.inspiredprogrammer.com'))
+            #print(data)
+
+        for i in range(24):
+            data2.append(random.randint(200, 500))
+        flash(data, 'success')
+        #return redirect(url_for('users.login'))
+        return render_template('monitoring.html', title="Monitor your websites2 | ServerMonitor", form=form, data_responsetime=data, data_uptime=data2)
+    return render_template('monitoring.html', title="Monitor your websites | ServerMonitor", form=form)
 
