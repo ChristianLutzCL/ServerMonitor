@@ -2,6 +2,8 @@ from flask import current_app
 import requests, re, socket, json
 import time
 
+
+
 def ping(url, prefix="https://"):
     
     if check_valid_url(url) != 'ERROR':
@@ -79,4 +81,5 @@ def tracert(): #TODO tracert
 
 def func(x):
     return x
+
     
