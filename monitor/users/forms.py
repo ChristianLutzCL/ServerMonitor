@@ -70,4 +70,5 @@ class ResetPasswordForm(FlaskForm):
 class AddWebsiteForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
     website_url = StringField('Website URL', validators=[DataRequired(), URL()])
+    monitoring_activated = BooleanField('Monitoring activated?')
     submit = SubmitField('Add')
