@@ -1,10 +1,11 @@
 import os
 
-
 class Config:
+
     #Flask and DB Keys
     SECRET_KEY = os.environ.get('FLASK_SERVERMONITOR')
     SQLALCHEMY_DATABASE_URI = 'sqlite:///site.db'
+    #SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     #API Keys
     IPSTACK_API_KEY = os.environ.get('IPSTACK_KEY')
