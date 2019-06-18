@@ -51,7 +51,7 @@
             "request": "launch",
             "module": "flask",
             "env": {
-                "FLASK_APP": "monitor_app.py"
+                "FLASK_APP": "__init__.py"
             },
             "args": [
                 "run",
@@ -65,18 +65,17 @@
             "type": "python",
             "request": "launch",
             "stopOnEntry": false,
-            //"pythonPath": "${config:python.pythonPath}",
             "module": "flask",
             "cwd": "${workspaceRoot}",
             "env": {
                 "FLASK_APP": "run.py",
                 "FLASK_ENV": "development",
-                "APP_SETTINGS": "config.cfg"
+                "APP_SETTINGS": "config.cfg",
+                "FLASK_DEBUG": 1
             },
             "args": [
                 "run",
-                "--reload",
-                "--port",
+                "-p",
                 "8080"
             ],
             "envFile": "${workspaceRoot}/venv",
@@ -95,7 +94,7 @@
             "module": "flask",
             "cwd": "${workspaceRoot}",
             "env": {
-                "FLASK_APP": "run.py",
+                "FLASK_APP": "monitor",
                 "FLASK_ENV": "production"
             },
             "args": [
