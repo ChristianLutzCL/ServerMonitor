@@ -65,14 +65,72 @@
                                 </div>
                             </form>
                         </div>
+                        <div class="content-section card-body">
+                            <form method="POST" action="" enctype="multipart/form-data">
+                                {{ form.hidden_tag() }}
+                                <fieldset class="form-group">
+                                    <legend class="border-bottom mb-4">Danger Zone</legend>
+                                        <div class="card border-danger">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <a class="font-weight-bold">Delete your account</a></br>
+                                                        <a>Once you deleted your account, there is no going back.</a>
+                                                    </div>
+                                                    <div class="col col-md-4 text-center">
+                                                        <button type="button" class="btn btn-danger float-right" data-toggle="modal" data-target="#deletionModal">Delete Account</button>
+
+                                                        <!-- Modal -->
+                                                        <div class="modal fade" id="deletionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog" role="document">
+                                                                  <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                      <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+                                                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                      </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <div class="alert alert-warning" role="alert">
+                                                                                <h5 class="alert-heading"><i class="fa fa-warning"></i> Warning!</h5>
+                                                                            Please read carefully!
+                                                                        </div>
+                                                                        <div>
+                                                                            <p>
+                                                                                This action deletes your account completely!
+                                                                                All information will be irrevocably deleted from the database. 
+                                                                                Restoring the data is no longer possible after this action has been completed.
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <p>Type in your email adress to confirm.</p>    
+                                                                            {{ deletion_form.confirmation(class="form-control form-control") }}
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <div class="form-group">
+                                                                                {{ deletion_form.submit(class="btn btn-outline-danger btn-block") }}
+                                                                        </div>
+                                                                    </div>
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+                                                        <!-- Modal end -->
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                            </form>
+                        </div>
                     </div>
             </div>
         </div>
         <div class="col">
             <div class="container-fluid shadow-sm p-2 mb-5 bg-white rounded">
-                <h5 class="card-header">Send me a Message</h5>
+                <h5 class="card-header">Additional account informations</h5>
                     <div class="card-body">
-                              
+                        {{ current_user.login_count }}
                     </div>
             </div>
         </div>
