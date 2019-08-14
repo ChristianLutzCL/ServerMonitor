@@ -5,10 +5,9 @@ from apscheduler.schedulers.background import BackgroundScheduler
 import os
 import time
 import atexit
+from datetime import datetime
 
 
-def add_monitoring():
-    pass
 
 
 def print_date_time():
