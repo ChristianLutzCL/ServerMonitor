@@ -1,6 +1,21 @@
 <!doctype html>
 <html lang="en" style="width:100%; height:100%; margin:0;">
   <head>
+    <!-- ServiceWorker -->
+    <!--<script src="/static/service-worker.js"></script>-->
+
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+
+    <script>
+        // Check that service workers are supported
+        if ('serviceWorker' in navigator) {
+          // Use the window load event to keep the page load performant
+          window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/static/service-worker.js');
+          });
+        }
+    </script>
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,6 +25,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
