@@ -67,6 +67,15 @@ class ResetPasswordForm(FlaskForm):
 
 
 
+class DeleteAccountForm(FlaskForm):
+    confirmation = StringField('Confirm Deletion', validators=[DataRequired(), Email()])
+    submit = SubmitField('Yes, I know what I do. Delete my account!')
+
+    def validate_email(self, confirmation):
+        user = User.query.filter_by(confirmation=email.data).first()
+
+
+
 class AddWebsiteForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
     website_url = StringField('Website URL', validators=[DataRequired(), URL()])
