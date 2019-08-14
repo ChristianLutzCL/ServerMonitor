@@ -61,8 +61,11 @@ class User(db.Model, UserMixin):
 class ContiniousMonitoring(db.Model):
     __table_args__ = {'extend_existing': True} 
 
+    # DB Metadata problem FIX
+    # db.metadata.clear()
+
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer)
+    user_id = db.Column(db.Integer) #New Database - user_id = db.Column(db.Integer, db.ForeginKey('User.id'))
     creation_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     website_name = db.Column(db.String(20), unique=True, nullable=False)
     website_url = db.Column(db.String(20), nullable=False)
