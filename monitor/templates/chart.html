@@ -5,9 +5,9 @@
 
 <div class="website-monitor container-fluid shadow-sm p-2 mb-5 bg-white rounded">
     <h4>{{ monitoring_name }} <span class="badge badge-success">Online</span></h4>
-    <h6>https://monitor.inspiredprogrammer.com</h6>
+    <h6>{{ website_url  }}</h6>
     <p></p>
-    <a>Response Time (ms)</a>
+    <a>Response Time (ms) - UTC</a>
     <p></p>
     <div class="chart-container responsetime" style="position: relative; height:140px; width:835px">
         <canvas id="responsetime-chart" height="140px" width="835px"></canvas>
@@ -35,7 +35,33 @@
     
         // The data for our dataset
         data: {
-            labels: ['00:00', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '00:00'],
+            labels: [
+            '00:00', 
+            '01:00', 
+            '02:00', 
+            '03:00', 
+            '04:00', 
+            '05:00', 
+            '06:00', 
+            '07:00', 
+            '08:00', 
+            '09:00', 
+            '10:00', 
+            '11:00', 
+            '12:00', 
+            '13:00', 
+            '14:00', 
+            '15:00', 
+            '16:00', 
+            '17:00', 
+            '18:00', 
+            '19:00', 
+            '20:00', 
+            '21:00', 
+            '22:00', 
+            '23:00', 
+            '24:00'
+            ],
             datasets: [{
                 //label: 'My First dataset',
                 //borderColor: 'rgb(0, 0, 0)',
