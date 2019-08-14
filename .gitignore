@@ -4,3 +4,5 @@ __pycache__
 #Files
 *.pyc
 *.pyo
+monitor/site.db
+

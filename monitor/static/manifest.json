@@ -1,0 +1,45 @@
+{
+    "name": "ServerMonitor - InspiredProgrammer",
+    "short_name": "ServerMonitor - InspiredProgrammer",
+    "description": "ServerMonitor is a web application for monitoring websites",
+    "theme_color": "transparent",
+    "background_color": "transparent",
+    "display": "standalone",
+    "orientation": "portrait",
+    "scope": "/",
+    "start_url": "/",
+    "icons": [
+      {
+        "src": "img/icon.svg",
+        "sizes": "72x72"
+      },
+      {
+        "src": "img/icon.svg",
+        "sizes": "96x96"
+      },
+      {
+        "src": "img/icon.svg",
+        "sizes": "128x128"
+      },
+      {
+        "src": "img/icon.svg",
+        "sizes": "144x144"
+      },
+      {
+        "src": "img/icon.svg",
+        "sizes": "152x152"
+      },
+      {
+        "src": "img/icon.svg",
+        "sizes": "192x192"
+      },
+      {
+        "src": "img/icon.svg",
+        "sizes": "384x384"
+      },
+      {
+        "src": "img/icon.svg",
+        "sizes": "512x512"
+      }
+    ]
+}

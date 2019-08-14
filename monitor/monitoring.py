@@ -1,5 +1,8 @@
 from flask import current_app
 import requests, re, socket, json
+import time
+
+
 
 def ping(url, prefix="https://"):
     
@@ -71,10 +74,12 @@ def get_server_location(ip):
         #return resp['region_name']
         return resp['city'], loc_obj['country_flag']
 
+
 def tracert(): #TODO tracert
     return 0
 
 
 def func(x):
     return x
+
     

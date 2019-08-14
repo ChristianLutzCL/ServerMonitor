@@ -27,10 +27,12 @@ def create_app(config_class=Config):
     from monitor.users.routes import users
     from monitor.main.routes import main
     from monitor.errors.handlers import errors
+    from monitor.api.routes import api
 
     app.register_blueprint(users)
     app.register_blueprint(main)
     app.register_blueprint(errors)
+    app.register_blueprint(api)
 
     return app
 

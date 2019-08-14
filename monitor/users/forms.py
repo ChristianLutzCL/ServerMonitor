@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
 from flask_login import current_user
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
-from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
+from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError, URL
 from monitor.models import User
 
 
@@ -64,3 +64,20 @@ class ResetPasswordForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     password_confirm = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Reset Password')
+
+
+
+class DeleteAccountForm(FlaskForm):
+    confirmation = StringField('Confirm Deletion', validators=[DataRequired(), Email()])
+    submit = SubmitField('Yes, I know what I do. Delete my account!')
+
+    def validate_email(self, confirmation):
+        user = User.query.filter_by(confirmation=email.data).first()
+
+
+
+class AddWebsiteForm(FlaskForm):
+    name = StringField('Name', validators=[DataRequired()])
+    website_url = StringField('Website URL', validators=[DataRequired(), URL()])
+    monitoring_activated = BooleanField('Monitoring activated?')
+    submit = SubmitField('Add')
