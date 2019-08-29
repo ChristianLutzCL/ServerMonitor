@@ -78,7 +78,7 @@
                                                         <a>Once you deleted your account, there is no going back.</a>
                                                     </div>
                                                     <div class="col col-md-4 text-center">
-                                                        <button type="button" class="btn btn-danger float-right" data-toggle="modal" data-target="#deletionModal">Delete Account</button>
+                                                        <button type="button" class="btn btn-danger float-right" data-toggle="modal" data-target="#deletionModal" style="margin-top: 5px;">Delete Account</button>
 
                                                         <!-- Modal -->
                                                         <div class="modal fade" id="deletionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -97,7 +97,7 @@
                                                                         </div>
                                                                         <div>
                                                                             <p>
-                                                                                This action deletes your account completely!
+                                                                                This action <strong>deletes your account</strong> completely!
                                                                                 All information will be irrevocably deleted from the database. 
                                                                                 Restoring the data is no longer possible after this action has been completed.
                                                                             </p>
@@ -130,7 +130,20 @@
             <div class="container-fluid shadow-sm p-2 mb-5 bg-white rounded">
                 <h5 class="card-header">Additional account informations</h5>
                     <div class="card-body">
-                        {{ current_user.login_count }}
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                              Login count:
+                              <span class="badge badge-primary badge-pill">{{ current_user.login_count }}</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                              Last login:
+                              <span class="badge badge-primary badge-pill">{{ current_user.last_login.strftime("%d.%m.%Y, %H:%M:%S") }} UTC </span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                              Last IP:
+                              <span class="badge badge-primary badge-pill">{{ current_user.last_ip }}</span>
+                            </li>
+                          </ul>
                     </div>
             </div>
         </div>
