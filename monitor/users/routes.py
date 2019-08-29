@@ -131,10 +131,13 @@ def reset_token(token):
 
 import random
 
+
+#TODO: Rework whole monitoring function
 @users.route("/monitoring", methods=('GET', 'POST'))
 @login_required
 def monitoring():
     form = AddWebsiteForm()
+
     data_responsetime = {
         "0000": 0,
         "0100": 0,
@@ -191,32 +194,34 @@ def monitoring():
     }
 
     if form.validate_on_submit():
-        c = datetime.utcnow().hour
-        d = str(c) + '00'
-        data_responsetime[d] = check_latency(form.website_url.data)
-        i = json.dumps(data_responsetime)
-        n = json.loads(i)
+        current_hour = datetime.utcnow().hour
+        current_hour_mil = str(current_hour) + '00'
+        data_responsetime[current_hour_mil] = check_latency(form.website_url.data)
+        
+        response_time_json = json.dumps(data_responsetime)
+        response_time_dict = json.loads(response_time_json)
         #data_responsetime.append(json.dumps({'current time': (check_latency(form.website_url.data))}))
         #t = json.dumps({'current time': (check_latency(form.website_url.data))})
-        monitoring = ContiniousMonitoring(user_id=current_user.id, website_name=form.name.data, website_url=form.website_url.data, isRunning=form.monitoring_activated.data, response_time=i, up_time='leer')
+        monitoring = ContiniousMonitoring(user_id=current_user.id, website_name=form.name.data, website_url=form.website_url.data, isRunning=form.monitoring_activated.data, response_time=response_time_json, up_time='leer')
         db.session.add(monitoring)
         db.session.commit()
         flash(f'\"{form.name.data}\" has been created!', 'success')
         
-        return render_template('monitoring.html', title="Monitor your websites | ServerMonitor", form=form, website_url=form.website_url.data, monitoring_name=form.name.data, data_responsetime=list(n.values()), data_uptime=data_responsetime)
+        return render_template('monitoring.html', title="Monitor your websites | ServerMonitor", form=form, website_url=form.website_url.data, monitoring_name=form.name.data, data_responsetime=list(response_time_dict.values()), data_uptime=data_responsetime)
 
-    mon = ContiniousMonitoring.query.filter_by(id=1).first()
+    
+    #mon = ContiniousMonitoring.query.filter_by(id=1).first()
     
     #print(mon.response_time)
 
-    s = json.loads(mon.response_time)
-    s['2400'] = check_latency(mon.website_url)
-    mon.response_time = json.dumps(s)
+    #s = json.loads(mon.response_time)
+    #s['2400'] = check_latency(mon.website_url)
+    #mon.response_time = json.dumps(s)
 
-    db.session.commit()
-    print(s.values())
+    #db.session.commit()
+    #print(s.values())
 
-    v = json.loads(mon.response_time)
+    #v = json.loads(mon.response_time)
 
-    return render_template('monitoring.html', title="Monitor your websites | ServerMonitor", form=form, website_url=mon.website_url, monitoring_name=mon.website_name, data_responsetime=list(v.values()))
+    return render_template('monitoring.html', title="Monitor your websites | ServerMonitor", form=form)#, website_url=mon.website_url, monitoring_name=mon.website_name, data_responsetime=list(v.values()))
 
