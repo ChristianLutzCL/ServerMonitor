@@ -15,9 +15,15 @@ Starting from getting an idea what to build, over planning what to do next up to
 Also getting into working with others on such a project is something, I want to accomplish with this project.
 
 
--------------------------------------
 
-# NOT FINAL!
+## Can I already contribute?
+Simple answer - Yes!
+Unfortunately, there are currently no contribution guidelines for this project and therefore there is no "correct way" to contribute.
+If you have an suggestion for something that could be improved, simply do a PR (Pull Request).
+
+I'm happy about anyone who wants to help. 💪
+
+
 
 ## How to setup?
 #### Step 1: Clone the repository
@@ -27,13 +33,13 @@ cd ServerMonitor
 ```
 
 #### Step 2: Create a VirtualEnvironment with the name 'venv'
-  - Note!: Naming your VirtualEnvironment this way helps, if you use VSCode.
+Note: Naming your VirtualEnvironment this way helps, if you use VSCode.
 ```bash
 python -m venv venv
 ```
 
 #### Step 3: Activate your VirtualEnvironment
-  - Windows Powershell
+ -> Windows Powershell
 ```bash
 venv/Scripts/activate
 ```
@@ -43,11 +49,7 @@ venv/Scripts/activate
 pip install -r requirements.txt
 ``` 
 
-------------------------------------------
-
-## Can I already contribute?
-Simple answer - Yes!
-Unfortunately, there are currently no contribution guidelines for this project and therefore there is no "correct way" to contribute.
-If you have an suggestion for something that could be improved, simply do a PR (Pull Request).
-
-I'm happy about anyone who wants to help. 💪
+#### Step 5: Run the application
+```bash
+python run.py
+``` 
