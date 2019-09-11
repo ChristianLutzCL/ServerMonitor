@@ -2,8 +2,6 @@
 
 [![Build Status](https://travis-ci.org/ChristianLutzCL/ServerMonitor.svg?branch=master)](https://travis-ci.org/ChristianLutzCL/ServerMonitor) | Main branch
 
-[![Build Status](https://travis-ci.org/ChristianLutzCL/ServerMonitor.svg?branch=websitemonitoring-user-dashboard)](https://travis-ci.org/ChristianLutzCL/ServerMonitor) | Development branch
-
 [ServerMonitor](https://monitor.inspiredprogrammer.com) is a web application for monitoring the status of web pages based on their response. It also gives you additional information about the website like IP adress, ping and the location of the web server.
 
 <p align="center">
@@ -16,6 +14,25 @@ Mostly, the goal is to learn (more or less) everything about web development.
 Starting from getting an idea what to build, over planning what to do next up to coding the actual application.
 Also getting into working with others on such a project is something, I want to accomplish with this project.
 
+
+-------------------------------------
+
+# NOT FINAL!
+
+## How to setup?
+- Step 1: Clone the repository
+```bash
+git clone https://github.com/ChristianLutzCL/ServerMonitor.git
+cd ServerMonitor
+```
+
+- Step 2: Create a VirtualEnvironment
+```bash
+pip install virtualenv
+virtualenv <choose an env name>
+```
+
+------------------------------------------
 
 ## Can I already contribute?
 Simple answer - Yes!
