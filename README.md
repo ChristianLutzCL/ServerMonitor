@@ -1,6 +1,6 @@
 # ServerMonitor
 
-[![Build Status](https://travis-ci.org/ChristianLutzCL/ServerMonitor.svg?branch=master)](https://travis-ci.org/ChristianLutzCL/ServerMonitor) | Main branch
+[![Build Status](https://travis-ci.org/ChristianLutzCL/ServerMonitor.svg?branch=master)](https://travis-ci.org/ChristianLutzCL/ServerMonitor)
 
 [ServerMonitor](https://monitor.inspiredprogrammer.com) is a web application for monitoring the status of web pages based on their response. It also gives you additional information about the website like IP adress, ping and the location of the web server.
 
@@ -46,10 +46,16 @@ venv/Scripts/activate
 
 #### Step 4: Install the requirements
 ```bash
-pip install -r requirements.txt
+(venv) pip install -r requirements.txt
 ``` 
 
 #### Step 5: Run the application
 ```bash
-python run.py
+(venv) python run.py
 ``` 
+
+*(venv) -> VirtualEnvironment is activated
+
+
+#### Note: To get the app running, open config.py and create a EnvironmentVariable for Flask and the IPSTACK-API on your local machine.
+#### ServerMonitor uses the IPSTACK-API for certain operations. Please visit https://ipstack.com and create your own API-Key.
