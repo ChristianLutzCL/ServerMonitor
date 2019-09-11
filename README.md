@@ -20,17 +20,28 @@ Also getting into working with others on such a project is something, I want to 
 # NOT FINAL!
 
 ## How to setup?
-- Step 1: Clone the repository
+#### Step 1: Clone the repository
 ```bash
 git clone https://github.com/ChristianLutzCL/ServerMonitor.git
 cd ServerMonitor
 ```
 
-- Step 2: Create a VirtualEnvironment
+#### Step 2: Create a VirtualEnvironment with the name 'venv'
+  - Note!: Naming your VirtualEnvironment this way helps, if you use VSCode.
 ```bash
-pip install virtualenv
-virtualenv <choose an env name>
+python -m venv venv
 ```
+
+#### Step 3: Activate your VirtualEnvironment
+  - Windows Powershell
+```bash
+venv/Scripts/activate
+```
+
+#### Step 4: Install the requirements
+```bash
+pip install -r requirements.txt
+``` 
 
 ------------------------------------------
 
