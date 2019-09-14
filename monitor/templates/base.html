@@ -1,11 +1,13 @@
 <!doctype html>
 <html lang="en" style="width:100%; height:100%; margin:0;">
   <head>
-    <!-- ServiceWorker -->
-    <!--<script src="/static/service-worker.js"></script>-->
 
+    <!-- Manifest JSON-->
     <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <!-- End Manifest JSON -->
 
+    
+    <!-- ServiceWorker -->
     <script>
         // Check that service workers are supported
         if ('serviceWorker' in navigator) {
@@ -15,20 +17,39 @@
           });
         }
     </script>
+    <!-- End ServiceWorker -->
+
+
+    <!-- plausible.io Analytics-->
+    <script>
+      (function (w,d,s,o,f,js,fjs) {
+      w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments) };
+      js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
+      js.id = o; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs);
+      }(window, document, 'script', 'plausible', 'https://plausible.io/js/p.js'));
+    
+      plausible('page')
+    </script>
+    <!-- End plausible.io Analytics-->
+
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+
     <link rel="shortcut icon" href="/static/img/favicon.ico">
     <!--<link rel="stylesheet" href="/static/css/main.css">-->
+
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 
     <title>{% block title %}{% endblock %}</title>
   </head>
