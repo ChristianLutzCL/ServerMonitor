@@ -55,11 +55,11 @@ venv/Scripts/activate
 *(venv) -> VirtualEnvironment is activated
 
 
-#### Note: 
+##### Note: 
 To get the app running, open config.py and create a EnvironmentVariable for Flask and the IPSTACK-API on your local machine.
 ServerMonitor uses the IPSTACK-API for certain operations. Please visit https://ipstack.com and create your own API-Key.
 
 
 # License
 
-GNU General Public License (GPL) - [Christian Lutz](https://github.com/christianlutzcl/). Please have a look at the [LICENSE](LICENSE) for more details.
+GNU General Public License (GPL v3.0) - [Christian Lutz](https://github.com/christianlutzcl/). Please have a look at the [LICENSE](LICENSE) for more details.
