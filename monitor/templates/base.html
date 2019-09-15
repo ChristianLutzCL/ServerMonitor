@@ -35,7 +35,17 @@
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
+    <meta http-equiv="language" content="en">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#343a40">
+
+    <!-- Meta Desctiption for Search -->
+    <meta name="description" content="► Offline for everyone or just for me? Easily check the status of websites with ServerMonitor! ✅">
+    <meta name="title" content="Is the website online? - ServerMonitor"/>
+    <meta property="og:description" content="► Offline for everyone or just for me? Easily check the status of websites with ServerMonitor! ✅"/>
+    <meta property="og:title" content="Is the website online? - ServerMonitor"/>
+    <meta name="twitter:description" content="► Offline for everyone or just for me? Easily check the status of websites with ServerMonitor! ✅">
+    <meta name="twitter:title" content="Is the website online? - ServerMonitor"/>
 
 
     <link rel="shortcut icon" href="/static/img/favicon.ico">
@@ -76,10 +86,9 @@
                     <a href="{{ url_for('users.account') }}" role="button">Account</a>
                   </li>
                   <li class="list-group-item border-0">
-                      <a href="{{ url_for('users.logout') }}" role="button">Log Out</a>
-                    </li>
+                    <a href="{{ url_for('users.logout') }}" role="button">Log Out</a>
+                  </li>
               </div>
-            </a>
             {% else %}
             <a class="nav-item nav-link text-light" style="margin-right: 16px" href="{{ url_for('users.login') }}">Log In</a>
             <a class="nav-item nav-link border text-light rounded" href="{{ url_for('users.signup') }}">Sign Up</a>
