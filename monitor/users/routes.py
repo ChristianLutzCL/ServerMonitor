@@ -136,7 +136,7 @@ import random
 @login_required
 def my_websites():
     form = AddWebsiteForm()
-    return render_template('my_websites.html', title="My Websites | ServerMonitor", form=form)#, website_url=mon.website_url, monitoring_name=mon.website_name, data_responsetime=list(v.values()))
+    return render_template('my_websites.html', title="My Websites | ServerMonitor", form=form)
 
 
 
