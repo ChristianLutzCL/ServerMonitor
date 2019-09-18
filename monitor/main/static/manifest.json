@@ -1,12 +1,12 @@
 {
-    "name": "ServerMonitor - InspiredProgrammer",
-    "short_name": "ServerMonitor - InspiredProgrammer",
+    "name": "ServerMonitor",
+    "short_name": "ServerMonitor",
     "description": "ServerMonitor is a web application for monitoring websites",
-    "theme_color": "transparent",
-    "background_color": "transparent",
+    "theme_color": "#212529",
+    "background_color": "#212529",
     "display": "standalone",
     "orientation": "portrait",
-    "start_url": "/static/",
+    "start_url": "/",
     "icons": [
       {
         "src": "img/component.png",
