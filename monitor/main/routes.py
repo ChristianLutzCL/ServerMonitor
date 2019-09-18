@@ -8,7 +8,7 @@ from sqlalchemy import desc
 
 from monitor.main.utils import contact_mail
 
-main = Blueprint('main', __name__)
+main = Blueprint('main', __name__, static_folder='static', static_url_path='/main/static') #static_folder='static', static_url_path='/main/static
 
 
 @main.route("/", methods=['GET', 'POST'])
@@ -66,9 +66,29 @@ def info():
         return render_template('info.html', title="Info | ServerMonitor")
 
 
-@main.errorhandler(404)
-def page_not_found(e):
-    return render_template('404.html'), 404
+#@main.errorhandler(404)
+#def page_not_found(e):
+#    return render_template('404.html'), 404
+
+
+@main.route("/offline.html")
+def offline():
+    return main.send_static_file('offline.html')
+
+
+@main.route("/service-worker.js")
+def sw():
+    return main.send_static_file('service-worker.js')
+
+
+@main.route("/app.js")
+def app():
+    return main.send_static_file('app.js')
+
+
+@main.route("/manifest.json")
+def manifest():
+    return main.send_static_file('manifest.json')
 
 
 

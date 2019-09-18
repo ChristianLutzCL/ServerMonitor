@@ -6,39 +6,38 @@
     "background_color": "transparent",
     "display": "standalone",
     "orientation": "portrait",
-    "scope": "/",
-    "start_url": "/",
+    "start_url": "/static/",
     "icons": [
       {
-        "src": "img/icon.svg",
+        "src": "img/component.png",
         "sizes": "72x72"
       },
       {
-        "src": "img/icon.svg",
+        "src": "img/component.png",
         "sizes": "96x96"
       },
       {
-        "src": "img/icon.svg",
+        "src": "img/component.png",
         "sizes": "128x128"
       },
       {
-        "src": "img/icon.svg",
+        "src": "img/component.png",
         "sizes": "144x144"
       },
       {
-        "src": "img/icon.svg",
+        "src": "img/component.png",
         "sizes": "152x152"
       },
       {
-        "src": "img/icon.svg",
+        "src": "img/component.png",
         "sizes": "192x192"
       },
       {
-        "src": "img/icon.svg",
+        "src": "img/component.png",
         "sizes": "384x384"
       },
       {
-        "src": "img/icon.svg",
+        "src": "img/component.png",
         "sizes": "512x512"
       }
     ]

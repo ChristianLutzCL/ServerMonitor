@@ -3,22 +3,9 @@
   <head>
 
     <!-- Manifest JSON-->
-    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <link rel="manifest" href="{{ url_for('main.static', filename='manifest.json') }}">
     <!-- End Manifest JSON -->
 
-    
-    <!-- ServiceWorker -->
-    <script>
-        // Check that service workers are supported
-        if ('serviceWorker' in navigator) {
-          // Use the window load event to keep the page load performant
-          window.addEventListener('load', () => {
-            console.log('[ServiceWorker] registred!')
-            navigator.serviceWorker.register('/static/service-worker.js');
-          });
-        }
-    </script>
-    <!-- End ServiceWorker -->
 
 
     <!-- plausible.io Analytics-->
@@ -141,6 +128,8 @@
   ga('send', 'pageview');
   </script>
   <!-- End Google Analytics -->
+
+  <script src="{{ url_for('main.static', filename='app.js') }}"></script>
 
 </body>
 </html>
