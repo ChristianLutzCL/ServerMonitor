@@ -2,8 +2,6 @@
 // https://codelabs.developers.google.com/codelabs/your-first-pwapp/
 const cacheName = 'flask-PWA-v3';
 const filesToCache = [
-    '/',
-    'app.js',
     'offline.html'
 ];
 
