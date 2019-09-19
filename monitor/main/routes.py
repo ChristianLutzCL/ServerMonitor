@@ -66,10 +66,16 @@ def info():
         return render_template('info.html', title="Info | ServerMonitor")
 
 
-#@main.errorhandler(404)
-#def page_not_found(e):
-#    return render_template('404.html'), 404
+@main.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
 
+
+
+
+#=========================================
+# Routes for PWA-Files
+#=========================================
 
 @main.route("/offline.html")
 def offline():
