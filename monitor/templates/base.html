@@ -63,8 +63,8 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarToggle">
         <div class="navbar-nav mr-auto">
-          <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
-          <a class="nav-item nav-link" href="/info">Info</a>
+          <a class="nav-item nav-link active" href="{{url_for('main.index')}}">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link" href="{{url_for('main.info')}}">Info</a>
         </div>
         <div class="navbar-nav">
           {% if current_user.is_authenticated %}
