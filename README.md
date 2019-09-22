@@ -47,7 +47,14 @@ venv/Scripts/activate
 (venv) pip install -r requirements.txt
 ``` 
 
-#### Step 5: Run the application
+
+#### Step 5: Generate new database
+```bash
+(venv) python create_database.py
+``` 
+
+
+#### Step 6: Run the application
 ```bash
 (venv) python run.py
 ``` 
