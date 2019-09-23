@@ -16,7 +16,7 @@ import time
 import json
 from datetime import datetime
 
-from monitor.users.utils import save_picture, send_reset_email
+from monitor.users.utils import save_picture, send_reset_email, send_verification_email
 
 users = Blueprint('users', __name__)
 
@@ -47,7 +47,7 @@ def login():
             login_user(user, remember=form.remember.data)
             user.last_login = datetime.utcnow()
             user.login_count += 1
-            user.last_ip = request.remote_addr #Really Client IP?
+            user.last_ip = request.environ['REMOTE_ADDR'] #User IP or from server?
             db.session.commit()
             next_page = request.args.get('next')
             return redirect(next_page) if next_page else redirect(url_for('main.index'))
@@ -141,9 +141,10 @@ def my_websites():
 
 
 #/monitoring only shows the graphs of the selected website
-@users.route("/monitoring", methods=('GET', 'POST'))
+@users.route("/monitoring/<webiste_url>", methods=('GET', 'POST'))
 @login_required
-def monitoring():
+def monitoring(website_url):
+    c = website_url
     form = AddWebsiteForm()
 
     data_responsetime = {
