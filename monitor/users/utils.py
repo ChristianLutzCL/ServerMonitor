@@ -30,3 +30,15 @@ To reset your password, visit the following link:
 If you did not make this request, simply ignore this email.
 '''
     mail.send(msg)
+
+
+def send_verification_email(user):
+    token = user.get_reset_token()
+    msg = Message('Verificate your Email', sender='noreply@inspiredprogrammer.com', recipients=[user.email])
+    msg.body = f'''
+To verify your email adress, please visit the following link:
+{url_for('users.reset_token', token=token, _external=True)}
+
+If you did not make this request, simply ignore this email.
+'''
+    mail.send(msg)
