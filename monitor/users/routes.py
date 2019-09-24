@@ -47,7 +47,8 @@ def login():
             login_user(user, remember=form.remember.data)
             user.last_login = datetime.utcnow()
             user.login_count += 1
-            user.last_ip = request.environ.get('HTTP_X_REAL_IP', request.remote_addr) #User IP or from server?
+            user.last_ip = request.environ.get('HTTP_X_REAL_IP', request.remote_addr) #BUG: Doesnt work right now. Need config NGINX?
+            #print(request.environ.get('HTTP_X_REAL_IP', request.remote_addr))
             db.session.commit()
             next_page = request.args.get('next')
             return redirect(next_page) if next_page else redirect(url_for('main.index'))
