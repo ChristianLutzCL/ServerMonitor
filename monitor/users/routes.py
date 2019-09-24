@@ -137,15 +137,31 @@ import random
 @login_required
 def my_websites():
     form = AddWebsiteForm()
-    return render_template('my_websites.html', title="My Websites | ServerMonitor", form=form)
+    if form.validate_on_submit():
+        website_name = form.name.data
+        website_url = form.website_url.data
+        monitoring_active = form.monitoring_activated.data
+        website = ContiniousMonitoring(user_id=current_user.id, website_name=website_name, website_url=website_url, isRunning=monitoring_active, response_time='0000', up_time='0000')
+        db.session.add(website)
+        db.session.commit()
+        flash(f'Website Added', 'success')
+        return redirect(url_for('users.my_websites'))
+        #return render_template('my_websites.html', title="My Websites | ServerMonitor", form=form, website_query=website_query)
+    
+    website_query = ContiniousMonitoring.query.order_by(desc(ContiniousMonitoring.creation_date)).limit(10).all()
+    return render_template('my_websites.html', title="My Websites | ServerMonitor", form=form, current_user_id=current_user.id, website_query=website_query)
 
 
 
 #/monitoring only shows the graphs of the selected website
-@users.route("/monitoring/<webiste_url>", methods=('GET', 'POST'))
+@users.route("/monitoring/<string:website_url>", methods=('GET', 'POST'))
 @login_required
 def monitoring(website_url):
-    c = website_url
+    return render_template('monitoring.html', title="Monitor your websites | ServerMonitor", website_url=website_url)#, website_url=mon.website_url, monitoring_name=mon.website_name, data_responsetime=list(v.values()))
+    
+    
+    
+    '''
     form = AddWebsiteForm()
 
     data_responsetime = {
@@ -233,5 +249,7 @@ def monitoring(website_url):
 
     #v = json.loads(mon.response_time)
 
-    return render_template('monitoring.html', title="Monitor your websites | ServerMonitor", form=form)#, website_url=mon.website_url, monitoring_name=mon.website_name, data_responsetime=list(v.values()))
+    '''
+
+    
 
