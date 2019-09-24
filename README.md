@@ -62,9 +62,44 @@ venv/Scripts/activate
 *(venv) -> VirtualEnvironment is activated
 
 
-##### Note: 
+##### - Note: 
 To get the app running, open config.py and create a EnvironmentVariable for Flask and the IPSTACK-API on your local machine.
 ServerMonitor uses the IPSTACK-API for certain operations. Please visit https://ipstack.com and create your own API-Key.
+
+
+# Using VSCode
+If you're using VSCode for development, it helps if you name your VirtualEnvironment 'venv'.
+The reason is, this repository contains a .vscode folder in it with a predefined launch.json file.
+
+To run ServerMonitor via VSCode, simply start the debugger and choose "Flask [DEVELOPMENT]" as launch configuration.
+
+````json
+        {
+            "name": "Flask [DEVELOPMENT]",
+            "type": "python",
+            "request": "launch",
+            "stopOnEntry": false,
+            "module": "flask",
+            "cwd": "${workspaceRoot}",
+            "env": {
+                "FLASK_APP": "run.py",
+                "FLASK_ENV": "development",
+                "APP_SETTINGS": "config.cfg",
+                "FLASK_DEBUG": 1
+            },
+            "args": [
+                "run",
+                "-p",
+                "8080"
+            ],
+            "envFile": "${workspaceRoot}/venv",
+            "debugOptions": [
+                "WaitOnAbnormalExit",
+                "WaitOnNormalExit",
+                "RedirectOutput"
+            ]
+        },
+````
 
 
 # License
