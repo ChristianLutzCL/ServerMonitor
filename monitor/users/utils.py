@@ -42,3 +42,6 @@ To verify your email adress, please visit the following link:
 If you did not make this request, simply ignore this email.
 '''
     mail.send(msg)
+
+
+
