@@ -18,17 +18,20 @@
                         </div>
                         <p></p>
                         <div class="websites-dashboard">
-                            <div class="card">
-                              <div class="card-body d-flex">
-                                  <a href="" class="text-decoration-none text-secondary">
-                                    <p class="font-weight-bolder mb-1">https://monitor.inspiredprogrammer.com</p>   
-                                  </a>
-                                  <a class="px-5" href="/monitor.inspiredprogrammer.com/settings">
-                                    <!--<div class="material-icons">settings_applications</div>-->
-                                    <p class="text-decoration-none text-secondary font-weight-bolder mb-1 text-right">Settings</p>
-                                  </a>
+                          {% for query in website_query %}
+                          {% if current_user_id == query.user_id %}  
+                          <div class="card-body">
+                              <div class="card" style="width: auto;">
+                                  <div class="card-header">
+                                  <a>Name: {{ query.website_name }}</a>
+                                  </div>
+                                  <a href="{{ url_for('users.monitoring', website_url=query.website_name) }}">{{ query.website_url }}</a>
+                                  <li></li>
                               </div>
-                            </div>
+                          </div>
+                          {% endif%}
+                          {% endfor %}
+                          <p>
                         </div>
                         <!-- Modal -->
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
