@@ -138,13 +138,11 @@ import random
 def my_websites():
     form = AddWebsiteForm()
     if form.validate_on_submit():
-        website_name = form.name.data
-        website_url = form.website_url.data
-        monitoring_active = form.monitoring_activated.data
-        website = ContiniousMonitoring(user_id=current_user.id, website_name=website_name, website_url=website_url, isRunning=monitoring_active, response_time='0000', up_time='0000')
-        db.session.add(website)
-        db.session.commit()
-        flash(f'Website Added', 'success')
+        if form.name.data and form.website_url.data != '':
+            website = ContiniousMonitoring(user_id=current_user.id, website_name=form.name.data, website_url=form.website_url.data, isRunning=form.monitoring_activated.data, response_time='0000', up_time='0000')
+            db.session.add(website)
+            db.session.commit()
+            flash(f'Website Added', 'success')
         return redirect(url_for('users.my_websites'))
         #return render_template('my_websites.html', title="My Websites | ServerMonitor", form=form, website_query=website_query)
     
