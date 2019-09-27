@@ -51,53 +51,53 @@
 
     <title>{% block title %}{% endblock %}</title>
   </head>
-  <body class="bg-blue-800">
+  <body class="bg-blue-900">
     <div id="container mx-auto">
-        <nav class="flex items-center justify-between flex-wrap bg-blue-900 p-4 sticky top-0">
-            <div class="flex items-center flex-shrink-0 text-white mr-6">
+        <nav class="flex items-center justify-between flex-wrap bg-white p-4 sticky top-0">
+          <a href="{{url_for('main.index')}}">
+            <div class="flex items-center flex-shrink-0 text-gray-900 mr-6">
                 <img src="/static/img/icon.svg" width="30" height="30" class="fill-current h-8 w-8 mr-2" alt="">
-              <span class="font-bold text-xl tracking-tight">ServerMonitor</span>
+              <span class="font-bold text-xl tracking-tight text-gray-700">ServerMonitor <span class="font-thin text-orange-700">BETA</span></span>
             </div>
+          </a>
             <div class="block lg:hidden">
-              <button class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
+              <button class="flex items-center px-3 py-2 border rounded text-gray-200 border-gray-400 hover:text-gray hover:border-gray">
                 <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
               </button>
             </div>
             <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
               <div class="text-sm lg:flex-grow">
-                <a href="{{url_for('main.index')}}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
-                  Home
-                </a>
-                <a href="{{url_for('main.info')}}" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+                <a href="{{url_for('main.info')}}" class="font-medium block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-gray-600 mr-4">
                   Info
                 </a>
-                <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
+                <a href="#responsive-header" class="font-medium block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-gray-600">
                   Blog
                 </a>
               </div>
               <div>
                 {% if current_user.is_authenticated %}
-                <img src="{{ url_for('static', filename='profile_pictures/' + current_user.image_file) }}" alt="" class="rounded-full dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" width="40" height="40">
-                <div class="dropdown-menu dropdown-menu-right">
+                <img src="{{ url_for('static', filename='profile_pictures/' + current_user.image_file) }}" alt="Profile image" class="rounded-full dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" width="40" height="40">
+                <!--<div class="dropdown-menu dropdown-menu-right">
                   <li class="list-group-item border-0">
                     <a href="{{ url_for('users.account') }}" role="button">Account</a>
                   </li>
                   <li class="list-group-item border-0">
                     <a href="{{ url_for('users.logout') }}" role="button">Log Out</a>
                   </li>
-                </div>
+                </div>-->
                 {% else %}
-                <a class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0" href="{{ url_for('users.login') }}">Log In</a>
+                <a class="inline-block text-sm px-4 py-2 leading-none border rounded text-gray border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0" href="{{ url_for('users.login') }}">Log In</a>
                 <a class="inline-block text-sm px-4 py-2 leading-none border rounded text-white bg-orange-500 border-orange-500 hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0" href="{{ url_for('users.signup') }}">Sign Up</a>
                 {% endif %}
               </div>
             </div>
           </nav>
           {% block content%}{% endblock %}
-      <footer class="bg-blue-900 bottom-0">
-        <div class="footer-copyright text-center py-3 text-white">Made with ❤ in Germany | © 2019
+      <footer class="bg-white bottom-0">
+        <div class="footer-copyright text-center py-10 text-gray-900">Made with ❤ in Germany
           <p>Powered by InspiredProgrammer</p>
-          <a class="text-pink-900" href="mailto:chris@inspiredprogrammer.com">chris@inspiredprogrammer.com</a>
+          <a href="mailto:chris@inspiredprogrammer.com">chris@inspiredprogrammer.com</a>
+          <p>© 2019</p>
         </div>
       </footer>
     </div>
