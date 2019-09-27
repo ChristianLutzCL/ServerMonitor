@@ -6,7 +6,15 @@
     <link rel="manifest" href="{{ url_for('main.static', filename='manifest.json') }}">
     <!-- End Manifest JSON -->
 
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113171051-2"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
+    gtag('config', 'UA-113171051-2', { 'optimize_id': 'GTM-NP39F2Q'});
+    </script>
 
     <!-- plausible.io Analytics-->
     <script>
