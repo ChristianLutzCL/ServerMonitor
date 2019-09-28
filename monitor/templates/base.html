@@ -51,7 +51,7 @@
 
     <title>{% block title %}{% endblock %}</title>
   </head>
-  <body class="bg-blue-900">
+  <body class="bg-white">
     <div id="container mx-auto">
         <nav class="flex items-center justify-between flex-wrap bg-white p-4 sticky top-0">
           <a href="{{url_for('main.index')}}">
@@ -86,8 +86,8 @@
                   </li>
                 </div>-->
                 {% else %}
-                <a class="inline-block text-sm px-4 py-2 leading-none border rounded text-gray border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0" href="{{ url_for('users.login') }}">Log In</a>
-                <a class="inline-block text-sm px-4 py-2 leading-none border rounded text-white bg-orange-500 border-orange-500 hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0" href="{{ url_for('users.signup') }}">Sign Up</a>
+                <a class="inline-block text-sm px-4 py-2 leading-none border rounded text-gray-800 border-gray-800 hover:border-transparent hover:text-white hover:bg-gray-600 mt-4 lg:mt-0" href="{{ url_for('users.login') }}">Log In</a>
+                <a class="inline-block text-sm px-4 py-2 leading-none border rounded text-white bg-orange-500 border-orange-500 hover:border-transparent hover:text-orange-500 hover:border-orange-500 hover:bg-white mt-4 lg:mt-0" href="{{ url_for('users.signup') }}">Sign Up</a>
                 {% endif %}
               </div>
             </div>
