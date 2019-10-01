@@ -12,7 +12,6 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'UA-113171051-2', { 'optimize_id': 'GTM-NP39F2Q'});
     </script>
 
@@ -45,72 +44,75 @@
 
 
     <link rel="shortcut icon" href="/static/img/favicon.ico">
-    <!--<link rel="stylesheet" href="/static/css/main.css">-->
+    <link rel="stylesheet" href="/static/css/main.css">
 
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 
+
     <title>{% block title %}{% endblock %}</title>
   </head>
-  <body class="bg-light">
-    <div id="page-container" style="position: relative; min-height: 100vh;">
-      <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark shadow">
-      <a class="navbar-brand" href="{{url_for('main.index')}}">
-        <img src="/static/img/icon.svg" width="30" height="30" class="d-inline-block align-top" alt="">
-        ServerMonitor
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarToggle">
-        <div class="navbar-nav mr-auto">
-          <a class="nav-item nav-link active" href="{{url_for('main.index')}}">Home <span class="sr-only">(current)</span></a>
-          <a class="nav-item nav-link" href="{{url_for('main.info')}}">Info</a>
-        </div>
-        <div class="navbar-nav">
-          {% if current_user.is_authenticated %}
-              <img src="{{ url_for('static', filename='profile_pictures/' + current_user.image_file) }}" alt="" class="rounded-circle border border-white dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" width="40" height="40">
-              <div class="dropdown-menu dropdown-menu-right">
+  <body class="bg-white">
+    <div id="container mx-auto">
+        <nav class="flex items-center justify-between flex-wrap bg-white p-4 sticky top-0">
+          <a href="{{url_for('main.index')}}">
+            <div class="flex items-center flex-shrink-0 text-gray-900 mr-6">
+                <img src="/static/img/icon.svg" width="30" height="30" class="fill-current h-8 w-8 mr-2" alt="">
+              <span class="font-bold text-xl tracking-tight text-gray-700">ServerMonitor <span class="font-thin text-orange-700">BETA</span></span>
+            </div>
+          </a>
+            <div class="block lg:hidden">
+              <button class="flex items-center px-3 py-2 border rounded text-gray-900 border-gray-900 hover:text-gray hover:border-gray" onclick="toggle()">
+                <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+              </button>
+            </div>
+            <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto hidden" id="menu">
+              <div class="text-sm lg:flex-grow">
+                <a href="{{url_for('main.info')}}" class="font-medium block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-gray-600 mr-4">
+                  Info
+                </a>
+                <a href="#responsive-header" class="font-medium block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-gray-600">
+                  Blog
+                </a>
+              </div>
+              <div class="relative">
+                {% if current_user.is_authenticated %}
+                <button onclick="openMenu()" class="block h-8 w-8 rounded-full overflow-hidden border-2 border-gray-300 focus:outline-none focus:border-orange-500">
+                <img class="h-full w-full object-cover" src="{{ url_for('static', filename='profile_pictures/' + current_user.image_file) }}" alt="Profile image">
+                </button>
+                <div id="menuDiv" style="display: none" class="absolute right-0 mt-2 w-48 bg-gray-200 text-gray-800 shadow-md rounded-lg py-2">
+                  <a href="#" class="block px-4 py-1 hover:bg-orange-200">Account</a>
+                  <a href="#" class="block px-4 py-1 hover:bg-orange-200">Websites</a>
+                  <a href="#" class="block px-4 py-1 hover:bg-orange-200">Log Out</a>
+                </div>
+                <!--<div class="dropdown-menu dropdown-menu-right">
                   <li class="list-group-item border-0">
                     <a href="{{ url_for('users.account') }}" role="button">Account</a>
                   </li>
                   <li class="list-group-item border-0">
                     <a href="{{ url_for('users.logout') }}" role="button">Log Out</a>
                   </li>
+                </div>-->
+                {% else %}
+                <a class="inline-block text-sm px-4 py-2 leading-none border rounded text-gray-800 border-gray-800 hover:border-transparent hover:text-white hover:bg-gray-600 mt-4 lg:mt-0" href="{{ url_for('users.login') }}">Log In</a>
+                <a class="inline-block text-sm px-4 py-2 leading-none border rounded text-white bg-orange-500 border-orange-500 hover:border-transparent hover:text-orange-500 hover:border-orange-500 hover:bg-white mt-4 lg:mt-0" href="{{ url_for('users.signup') }}">Sign Up</a>
+                {% endif %}
               </div>
-            {% else %}
-            <a class="nav-item nav-link text-light" style="margin-right: 16px" href="{{ url_for('users.login') }}">Log In</a>
-            <a class="nav-item nav-link border text-light rounded" href="{{ url_for('users.signup') }}">Sign Up</a>
-          {% endif %}
-        </div>
-      </div>
-      </nav>
-
-      <div class="container-fluid" style="padding-top: 80px; padding-bottom: 100px">
-        {% with messages = get_flashed_messages(with_categories=true) %}
-          {% if messages %}
-            {% for category, message in messages %}
-            <div class="alert alert-{{ category }}">
-              {{ message }}
             </div>
-            {% endfor %}
-          {% endif %}
-        {% endwith %}
-
-        {% block content%}{% endblock %}
-      </div>
-
-      <footer class="page-footer font-small bg-dark" style="position: absolute; bottom: 0; width: 100%; height: 120px">
-        <div class="footer-copyright text-center py-3 text-white">Made with ❤ in Germany | © 2019
+          </nav>
+          {% block content%}{% endblock %}
+      <footer class="bg-white bottom-0">
+        <div class="footer-copyright text-center py-10 text-gray-900">Made with ❤ in Germany
           <p>Powered by InspiredProgrammer</p>
           <a href="mailto:chris@inspiredprogrammer.com">chris@inspiredprogrammer.com</a>
+          <p>© 2019</p>
         </div>
       </footer>
     </div>
@@ -138,6 +140,22 @@
   <!-- End Google Analytics -->
 
   <script src="{{ url_for('main.static', filename='app.js') }}"></script>
+
+  <script>
+    const menu = document.getElementById('menu');
+    const toggle = () => menu.classList.toggle("hidden");
+  </script>
+
+  <script>
+    function openMenu(){
+      var menu = document.getElementById("menuDiv");
+      if (menu.style.display === "none"){
+        menu.style.display = "block";
+      } else {
+        menu.style.display = "none";
+      }
+    }
+  </script>
 
 </body>
 </html>
