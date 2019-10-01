@@ -49,6 +49,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 
+
     <title>{% block title %}{% endblock %}</title>
   </head>
   <body class="bg-white">
@@ -65,7 +66,7 @@
                 <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
               </button>
             </div>
-            <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto" id="menu">
+            <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto hidden" id="menu">
               <div class="text-sm lg:flex-grow">
                 <a href="{{url_for('main.info')}}" class="font-medium block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-gray-600 mr-4">
                   Info
@@ -74,9 +75,16 @@
                   Blog
                 </a>
               </div>
-              <div>
+              <div class="relative">
                 {% if current_user.is_authenticated %}
-                <img src="{{ url_for('static', filename='profile_pictures/' + current_user.image_file) }}" alt="Profile image" class="rounded-full dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" width="40" height="40">
+                <button onclick="openMenu()" class="block h-8 w-8 rounded-full overflow-hidden border-2 border-gray-300 focus:outline-none focus:border-orange-500">
+                <img class="h-full w-full object-cover" src="{{ url_for('static', filename='profile_pictures/' + current_user.image_file) }}" alt="Profile image">
+                </button>
+                <div id="menuDiv" style="display: none" class="absolute right-0 mt-2 w-48 bg-gray-200 text-gray-800 shadow-md rounded-lg py-2">
+                  <a href="#" class="block px-4 py-1 hover:bg-orange-200">Account</a>
+                  <a href="#" class="block px-4 py-1 hover:bg-orange-200">Websites</a>
+                  <a href="#" class="block px-4 py-1 hover:bg-orange-200">Log Out</a>
+                </div>
                 <!--<div class="dropdown-menu dropdown-menu-right">
                   <li class="list-group-item border-0">
                     <a href="{{ url_for('users.account') }}" role="button">Account</a>
@@ -129,6 +137,17 @@
   <script>
     const menu = document.getElementById('menu');
     const toggle = () => menu.classList.toggle("hidden");
+  </script>
+
+  <script>
+    function openMenu(){
+      var menu = document.getElementById("menuDiv");
+      if (menu.style.display === "none"){
+        menu.style.display = "block";
+      } else {
+        menu.style.display = "none";
+      }
+    }
   </script>
 
 </body>
