@@ -1,9 +1,9 @@
 {
     "name": "ServerMonitor",
     "short_name": "ServerMonitor",
-    "description": "ServerMonitor is a web application for monitoring websites",
-    "theme_color": "#212529",
-    "background_color": "#212529",
+    "description": "Monitoring websites as easy as posting on Instagram",
+    "theme_color": "#ed8936",
+    "background_color": "#ed8936",
     "display": "standalone",
     "orientation": "portrait",
     "start_url": "/",
