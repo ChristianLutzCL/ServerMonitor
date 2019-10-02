@@ -32,7 +32,7 @@
     <meta charset="utf-8">
     <meta http-equiv="language" content="en">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#343a40">
+    <meta name="theme-color" content="#ed8936">
 
     <!-- Meta Desctiption for Search -->
     <meta name="description" content="► Offline for everyone or just for me? Easily check the status of websites with ServerMonitor! ✅">
@@ -75,10 +75,10 @@
             </div>
             <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto hidden" id="menu">
               <div class="text-sm lg:flex-grow">
-                <!--<a href="{{url_for('main.info')}}" class="font-medium block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-gray-600 mr-4">
+                <!--<a href="" class="font-medium block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-gray-600 mr-4">
                   Info
                 </a>-->
-                <a href="#responsive-header" class="font-medium block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-gray-600">
+                <a href="{{ url_for('main.blog') }}" class="font-medium block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-gray-600">
                   Blog
                 </a>
               </div>
@@ -102,8 +102,8 @@
             </div>
           </nav>
           {% block content%}{% endblock %}
-      <footer class="bg-white bottom-0">
-        <div class="footer-copyright text-center py-10 text-gray-900">Made with ❤ in Germany
+      <footer class="bg-gray-300 bottom-0">
+        <div class="footer-copyright text-center py-10 text-gray-900 font-semibold">Made with ❤ in Germany
           <p>Powered by InspiredProgrammer</p>
           <a href="mailto:chris@inspiredprogrammer.com">chris@inspiredprogrammer.com</a>
           <p>© 2019</p>
