@@ -66,6 +66,10 @@ def info():
         return render_template('info.html', title="Info | ServerMonitor")
 
 
+@main.route("/thankyou", methods=('GET', 'POST'))
+def thankyou():
+    return render_template('thankyou.html', title="Thank You! | ServerMonitor")
+
 @main.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404

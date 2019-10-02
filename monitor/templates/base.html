@@ -75,31 +75,25 @@
             </div>
             <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto hidden" id="menu">
               <div class="text-sm lg:flex-grow">
-                <a href="{{url_for('main.info')}}" class="font-medium block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-gray-600 mr-4">
+                <!--<a href="{{url_for('main.info')}}" class="font-medium block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-gray-600 mr-4">
                   Info
-                </a>
+                </a>-->
                 <a href="#responsive-header" class="font-medium block mt-4 lg:inline-block lg:mt-0 text-gray-800 hover:text-gray-600">
                   Blog
                 </a>
               </div>
-              <div class="relative">
+              <div>
                 {% if current_user.is_authenticated %}
-                <button onclick="openMenu()" class="block h-8 w-8 rounded-full overflow-hidden border-2 border-gray-300 focus:outline-none focus:border-orange-500">
-                <img class="h-full w-full object-cover" src="{{ url_for('static', filename='profile_pictures/' + current_user.image_file) }}" alt="Profile image">
-                </button>
-                <div id="menuDiv" style="display: none" class="absolute right-0 mt-2 w-48 bg-gray-200 text-gray-800 shadow-md rounded-lg py-2">
-                  <a href="#" class="block px-4 py-1 hover:bg-orange-200">Account</a>
-                  <a href="#" class="block px-4 py-1 hover:bg-orange-200">Websites</a>
-                  <a href="#" class="block px-4 py-1 hover:bg-orange-200">Log Out</a>
-                </div>
-                <!--<div class="dropdown-menu dropdown-menu-right">
-                  <li class="list-group-item border-0">
-                    <a href="{{ url_for('users.account') }}" role="button">Account</a>
-                  </li>
-                  <li class="list-group-item border-0">
-                    <a href="{{ url_for('users.logout') }}" role="button">Log Out</a>
-                  </li>
-                </div>-->
+                <div class="relative sm:block">
+                  <button onclick="openMenu()" class="block h-8 w-8 rounded-full overflow-hidden border-2 border-gray-300 focus:outline-none focus:border-orange-500">
+                    <img class="h-full w-full object-cover" src="{{ url_for('static', filename='profile_pictures/' + current_user.image_file) }}" alt="Profile image">
+                  </button>
+                    <div id="menuDiv" style="display: none" class="absolute right-0 mt-2 w-48 bg-gray-200 text-gray-800 shadow-md rounded-lg py-2">
+                      <a href="{{ url_for('users.account') }}" class="block px-4 py-1 hover:bg-orange-200">Account</a>
+                      <a href="{{ url_for('users.my_websites') }}" class="block px-4 py-1 hover:bg-orange-200">Websites</a>
+                      <a href="{{ url_for('users.logout') }}" class="block px-4 py-1 hover:bg-orange-200">Log Out</a>
+                    </div>
+                </div> 
                 {% else %}
                 <a class="inline-block text-sm px-4 py-2 leading-none border rounded text-gray-800 border-gray-800 hover:border-transparent hover:text-white hover:bg-gray-600 mt-4 lg:mt-0" href="{{ url_for('users.login') }}">Log In</a>
                 <a class="inline-block text-sm px-4 py-2 leading-none border rounded text-white bg-orange-500 border-orange-500 hover:border-transparent hover:text-orange-500 hover:border-orange-500 hover:bg-white mt-4 lg:mt-0" href="{{ url_for('users.signup') }}">Sign Up</a>
