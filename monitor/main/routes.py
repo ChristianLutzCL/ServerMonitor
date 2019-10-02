@@ -48,23 +48,14 @@ def index():
         return render_template('index.html', title="Is the website down? | ServerMonitor", url=url, status_code=status_code, status_reason=status_reason, lat='-', loc='-', ip='-', isdown=isdown, database_query=database_query)
 
 
-@main.route("/info", methods=('GET', 'POST'))
-def info():
-    if request.method == 'POST':
-        if request.form['txtName'] and request.form['txtEmail'] and request.form['txtMsg'] != '':
-            name = request.form['txtName']
-            email = request.form['txtEmail']
-            website = request.form['txtWebsite']
-            message = request.form['txtMsg']
-            contact_mail(name, email, website, message)
-            flash("Thank you for your message!" , 'success')
-            return render_template('info.html', title="Message sent! | ServerMonitor")
-        else:
-            flash("Something went wrong. Please try again." , 'danger')
-            return render_template('info.html', title="Info | ServerMonitor")
-    else:
-        return render_template('info.html', title="Info | ServerMonitor")
+@main.route("/blog", methods=('GET', 'POST'))
+def blog():
+        return render_template('blog.html', title="Blog | ServerMonitor")
 
+
+@main.route("/thankyou", methods=('GET', 'POST'))
+def thankyou():
+    return render_template('thankyou.html', title="Thank You! | ServerMonitor")
 
 @main.errorhandler(404)
 def page_not_found(e):

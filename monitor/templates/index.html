@@ -9,11 +9,37 @@
     <h1 class="text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-bold text-gray-800 leading-tight">Website monitoring as simple as posting on Instagram!</h1>
     <p class="py-4 md:py-8 font-light text-xl md:text-xl text-left text-gray-600 pr-16 md:pr-0">Getting real time data, insights and alerts about your website anywhere and anytime immediatly through SMS and E-Mail.</p>
     <div>
-      <button class="text-xl shadow-md font-medium bg-orange-500 hover:bg-orange-700 text-white py-2 px-4 rounded">Tell me when it's aviable!</button>
+      <!-- Email Octopus -->
+      <form method="post"
+        action="https://emailoctopus.com/lists/21c15f58-e49e-11e9-be00-06b4694bee2a/members/embedded/1.3/add"
+        class="email-octopus-form"
+        data-sitekey="6LdYsmsUAAAAAPXVTt-ovRsPIJ_IVhvYBBhGvRV6">
+      <div class="container">
+          <div class="block lg:inline-block email-octopus-form-row">
+              <input class="w-64 py-2 px-4 rounded border focus:outline-none focus:border-orange-500 text-orange-500" id="field_0" name="field_0" type="email" placeholder="Your Email">
+          </div>
+          <div class="block hidden email-octopus-form-row-hp" aria-hidden="true">
+              <!-- Do not remove this field, otherwise you risk bot sign-ups -->
+              <input type="text" name="hp21c15f58-e49e-11e9-be00-06b4694bee2a"
+                 tabindex="-1"
+                 autocomplete="nope">
+          </div>
+          <div class="block lg:inline-block email-octopus-form-row-subscribe">
+              <input type="hidden"
+                  name="successRedirectUrl"
+                  value="{{ url_for('main.thankyou') }}">
+              <button class="text-xl shadow-md font-medium bg-orange-500 hover:bg-orange-700 text-white sm:mt-2 md:mt-0 py-2 px-4 rounded">Tell me when it's aviable!</button>
+          </div>
+      </div>
+      </form>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+      <script src="https://emailoctopus.com/bundles/emailoctopuslist/js/1.3/recaptcha.js"></script>
+      <script src="https://emailoctopus.com/bundles/emailoctopuslist/js/1.3/formEmbed.js"></script>
+      <!-- Email Octopus End -->
     </div>
   </div>
-  <div class="w-2/2 mt-8 invisible sm:invisible md:visible lg:visible xl:visible">
-    <img class="min-w-1/2 xl:max-w-3xl lg:max-w-lg md:max-w-md md:pl-10" src="/static/img/undraw_google.svg" alt="">
+  <div class="w-1/3 mt-8 block justify-center items-center mx-auto flex md:visible lg:visible xl:visible">
+    <img class="min-w-1/2 xl:max-w-3xl lg:max-w-lg md:max-w-sm md:pl-10 md:pr-20 lg:pr-0" src="/static/img/undraw_google.svg" alt="">
   </div>
 </div>
 <div class="bg-gray-200 p-10 text-gray-900">
