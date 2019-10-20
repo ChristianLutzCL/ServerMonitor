@@ -1,7 +1,7 @@
 {
-    "python.pythonPath": "d:\\Users\\Christian\\Desktop\\website-monitoring-repo\\ServerMonitor\\venv\\Scripts\\python.exe",
+    "python.pythonPath": "venv\\Scripts\\python.exe",
     "python.linting.pylintEnabled": false,
-    "python.linting.pep8Enabled": false,
+    "python.linting.pycodestyleEnabled": false,
     "python.linting.enabled": false,
     "python.linting.banditEnabled": true,
     "git.ignoreLimitWarning": true
