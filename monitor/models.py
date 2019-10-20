@@ -67,7 +67,7 @@ class ContiniousMonitoring(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer) #New Database - user_id = db.Column(db.Integer, db.ForeginKey('User.id'))
     creation_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    website_name = db.Column(db.String(20), unique=True, nullable=False)
+    website_name = db.Column(db.String(20), unique=False, nullable=False)
     website_url = db.Column(db.String(20), nullable=False)
     isRunning = db.Column(db.Boolean)
     response_time = db.Column(db.String, nullable=False)
