@@ -1,29 +1,18 @@
 from flask import current_app
-from monitor.models import ContiniousMonitoring
-from apscheduler.schedulers.background import BackgroundScheduler
-
-import os
-import time
-import atexit
-from datetime import datetime
+from flask_login import current_user
+from monitor.models import ContiniousMonitoring, User
+from monitor import db
 
 
+def add_website(website_name='Test1234Monitor', website_url='https://monitor.inspiredprogrammer.com', isRunning=True, response_time='000', up_time='000'):
+    uid = current_user.id
+    website = ContiniousMonitoring(user_id=uid, website_name=website_name, website_url=website_url, isRunning=isRunning, response_time=response_time, up_time=up_time)
+    db.session.add(website)
+    db.session.commit()
+    #run_monitoring()
+    return website
 
+def run_monitoring():
+    websites = ContiniousMonitoring.query.filter_by(isRunning=True).all()
+    
 
-def print_date_time():
-    print(time.strftime("%A, %d. %B %Y %I:%M:%S %p"))
-
-
-def initial_scheduler():
-    ''' Checks the time until full hour is reached '''
-    scheduler = BackgroundScheduler()
-    scheduler.add_job(func=print_date_time, trigger='interval', seconds=1)
-    scheduler.start()
-
-def hourly_scheduler():
-    scheduler = BackgroundScheduler()
-    scheduler.add_job(func=print_date_time, trigger='interval', seconds=3600)
-    scheduler.start()
-
-
-atexit.register(lambda: scheduler.shutdown())
