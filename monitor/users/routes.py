@@ -130,8 +130,6 @@ def reset_token(token):
     return render_template('reset_token.html', title="Reset Password | ServerMonitor", form=form)
 
 
-import random
-
 
 @users.route("/websites", methods=('GET', 'POST'))
 @login_required
