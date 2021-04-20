@@ -27,7 +27,7 @@ more-itertools==7.0.0
 pep8==1.7.1
 Pillow==6.2.0
 pluggy==0.11.0
-py==1.8.0
+py==1.10.0
 pycparser==2.19
 pylint==2.3.1
 pytest==4.4.1
